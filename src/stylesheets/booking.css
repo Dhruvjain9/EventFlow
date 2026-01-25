@@ -1,0 +1,24 @@
+.container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
+.Booking-form{
+    padding:20px;
+}
+
+.Booking-form input{
+    padding: 10px;
+    margin: 15px;
+    border-radius: 999px;
+    border-width: 2px;
+}
+
+.Booking-form input[type="radio"]{
+    display: flex;
+}
