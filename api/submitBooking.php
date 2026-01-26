@@ -29,14 +29,15 @@ if (!$data) {
     exit;
 }
 
+/*$name         = $data["name"]*/
 $event_id     = $data["event_id"] ?? null;
 $email        = trim($data["email"] ?? null);
 
 /*Number of tickets is Hard-Coded*/
-$tickets_sold = 1;
+$tickets_sold = $data["tickets"] ?? 1;
 
 /* Validate */
-if (!$event_id || !$email) {
+if (!$event_id || !$email || !$tickets_sold) {
     http_response_code(400);
 
     echo json_encode(["error" => "Missing required fields"]);

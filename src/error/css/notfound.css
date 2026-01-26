@@ -1,0 +1,62 @@
+/* ===============================
+   404 PAGE
+================================ */
+
+.notfound-page {
+  min-height: 100vh;
+  background: #FFF1D0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.notfound-card {
+  background: #DD1C1A;
+  padding: 60px 50px;
+  border: solid #000;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+.notfound-card h1 {
+  font-size: 5rem;
+  margin-bottom: 10px;
+  color: #FFF1D0;
+}
+
+.notfound-card h2 {
+  color: #FFF1D0;
+  margin-bottom: 16px;
+}
+
+.notfound-card p {
+  color: #FFF1D0;
+  margin-bottom: 30px;
+}
+
+.notfound-card button {
+  padding: 14px 28px;
+  background: #FFF1D0;
+  color: #DD1C1A;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+  .notfound-card {
+    padding: 40px 30px;
+  }
+
+  .notfound-card h1 {
+    font-size: 4rem;
+  }
+}

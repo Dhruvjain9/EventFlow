@@ -1,47 +1,70 @@
-import { useEffect, useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import "../stylesheets/bookingsuccess.css";
 
 function BookingSuccess() {
-  const [bookingId, setBookingId] = useState(null);
-  const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const getBookingID = async () => {
-      try {
-        const res = await fetch(
-          "http://localhost/api/getBookingID.php",
+  const bookingId = location.state?.bookingId;
+  const event = location.state?.event;
 
-        );
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch booking ID");
-        }
-
-        const data = await res.json();
-        console.log(data);
-        // EXPECTING: { booking_id: 123 }
-        setBookingId(data.booking_id);
-      } catch (err) {
-        console.error(err);
-        setError("Booking ID not found, please try again!");
-      }
-    };
-
-    getBookingID();
-  }, []);
+  // Guard: prevent direct access / refresh
+  if (!bookingId) {
+    return <Navigate to="/*" replace />;
+  }
 
   return (
-    <main>
-      <section>
-        <h2>Your Booking is Successful</h2>
+    <main className="success-page">
+      <div className="success-card">
+        {/* Icon */}
+        <div className="success-icon">✓</div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        <h1>Booking Confirmed</h1>
+        <p className="success-subtitle">
+          Your booking has been completed successfully.
+        </p>
 
-        {bookingId && (
-          <ul>
-            <li>Your Booking ID is <strong>{bookingId}</strong></li>
-          </ul>
+        {/* Booking ID */}
+        <div className="success-highlight">
+          Booking ID: <strong>{bookingId}</strong>
+        </div>
+
+        {/* Event Details */}
+        {event && (
+          <div className="success-details">
+            <h3>Event Details</h3>
+
+            <div className="detail-row">
+              <span>Venue</span>
+              {event.VENUE}
+            </div>
+
+            <div className="detail-row">
+              <span>Date</span>
+              {event.DATE}
+            </div>
+
+            <div className="detail-row">
+              <span>Price</span>
+              ${event.TICKET_PRICE}
+            </div>
+          </div>
         )}
-      </section>
+
+        {/* Actions */}
+        <div className="success-actions">
+          <button onClick={() => navigate("/events")}>
+            Browse More Events
+          </button>
+
+          <button
+            className="secondary"
+            onClick={() => navigate("/")}
+          >
+            Go Home
+          </button>
+        </div>
+      </div>
     </main>
   );
 }

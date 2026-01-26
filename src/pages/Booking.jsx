@@ -1,52 +1,23 @@
 import { useState } from "react";
-import { useNavigate, Route, Routes } from "react-router-dom";
-
-import "../stylesheets/booking.css"
+import { Navigate, useNavigate, useLocation, Link } from "react-router-dom";
+import "../stylesheets/booking.css";
 
 function Booking() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const selectedEvent = location.state?.event;
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-  const [events, setEvents] = useState([]);
   const [agree, setAgree] = useState(false);
+  const [tickets, setTickets] = useState(1);
 
-  const navigate = useNavigate();
-
-  const getEvents = async (selectedCity) => {
-    if (!selectedCity) return;
-
-    try {
-      const res = await fetch(
-        `http://localhost/api/getEvents.php?city=${selectedCity}`
-      );
-
-      if (!res.ok) throw new Error("Failed to fetch events");
-
-      const data = await res.json();
-      setEvents(data); // expects array of dates (strings)
-    } catch (err) {
-      console.error(err);
-      setEvents([]);
-    }
-  };
-
-  const handleCityChange = (e) => {
-    const selectedCity = e.target.value;
-    setCity(selectedCity);
-    setEvents([]); // reset old events
-    getEvents(selectedCity);
-  };
+  if (!selectedEvent) {
+    return <Navigate to="/*" replace />;
+  }
 
   const sendData = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const eventId = formData.get("eventDate");
-
-    if (!eventId) {
-      alert("Please select an event date");
-      return;
-    }
 
     if (!agree) {
       alert("Please agree to terms and conditions");
@@ -54,115 +25,121 @@ function Booking() {
     }
 
     const payload = {
+      name,
       email,
-      event_id: eventId,
+      event_id: selectedEvent.event_id,
+      tickets
     };
-    console.log(payload);
+
     try {
       const res = await fetch("http://localhost/api/submitBooking.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       const data = await res.json();
-      
+      if (!res.ok) throw new Error(data.error);
 
-      if (!res.ok) {
-        throw new Error(data.error || "Booking failed");
-      }
-
-      console.log("Backend response:", data);
-
-      //Navigate to Booking Success
-      navigate("/BookingSuccess")
+      navigate("/BookingSuccess", {
+        state: {
+          bookingId: data.booking_id,
+          event: selectedEvent,
+        },
+      });
     } catch (err) {
       console.error(err);
-      alert(err);
+      alert("Booking failed");
     }
   };
 
-
   return (
-    <main>
-      <div className="container">
-        <h1>Booking Page</h1>
+    <main className="booking-page">
+      <div className="booking-card">
+        {/* LEFT: EVENT SUMMARY */}
+        <div className="booking-summary">
+          <h2>Event Details</h2>
 
-        <form className="Booking-form" onSubmit={sendData}>
-          {/* Name */}
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <br />
+          <div className="summary-item">
+            <span>Venue</span>
+            <strong>{selectedEvent.VENUE}</strong>
+          </div>
 
-          {/* Email */}
-          <input
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <br />
+          <div className="summary-item">
+            <span>Date</span>
+            <strong>{selectedEvent.DATE}</strong>
+          </div>
 
-          {/* City */}
-          <select value={city} onChange={handleCityChange} required>
-            <option value="">Select City</option>
-            <option value="BAHRIA">BAHRIA</option>
-            <option value="CANADA">CANADA</option>
-            <option value="GERMANY">GERMANY</option>
-            <option value="INDIA">INDIA</option>
-            <option value="PORT GRAND">PORT GRAND</option>
-            <option value="USA">USA</option>
-          </select>
-          <br />
+          <div className="summary-item">
+            <span>Ticket Price</span>
+            <strong>${selectedEvent.TICKET_PRICE}</strong>
+          </div>
 
-          {/* Event Dates */}
-          {city && (
-            <>
-              <p>Select Event Date:</p>
+          <div className="stepper">
+            <button
+              type="button"
+              onClick={() => setTickets((prev) => Math.max(1, prev - 1))}
+              disabled = {tickets === 1}
+            >
+              −
+            </button>
 
-              {events.length === 0 ? (
-                <p>No events available for this city</p>
-              ) : (
-                events.map((event) => (
-                  <label key={event.event_id}>
-                    <input
-                      type="radio"
-                      name="eventDate"
-                      value={event.event_id}
-                      required
-                    />
-                    {event.date}
-                    <br />
-                  </label>
-                ))
-              )}
-            </>
-          )}
-
-
-
-          {/* Terms */}
-          <label>
             <input
-              type="checkbox"
-              checked={agree}
-              onChange={(e) => setAgree(e.target.checked)}
+              type="number"
+              value={tickets}
+              readOnly
             />
-            I agree to the terms and conditions
-          </label>
-          <br />
 
-          {/* Submit */}
-          <button type="submit">Book Now</button>
-        </form>
+            <button
+              type="button"
+              onClick={() => setTickets((prev) => Math.min(10, prev + 1))}
+              disabled = {tickets === 10}
+            >
+              +
+            </button>
+          </div>
+
+        </div>
+
+        {/* RIGHT: FORM */}
+        <div className="booking-form-wrapper">
+          <h1>Confirm Your Booking</h1>
+
+          <form onSubmit={sendData}>
+            <label>
+              Full Name
+              <input
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+
+            <label>
+              Email Address
+              <input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+
+            <label className="checkbox">
+              <input
+                type="checkbox"
+                checked={agree}
+                onChange={(e) => setAgree(e.target.checked)}
+              />
+              I agree to the terms and conditions
+            </label>
+
+            <button type="submit">Confirm Booking</button>
+          </form>
+        </div>
       </div>
     </main>
   );

@@ -1,0 +1,121 @@
+/* ===============================
+   BOOKING SUCCESS PAGE
+================================ */
+
+.success-page {
+  min-height: 100vh;
+  background: #FFF1D0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.success-card {
+  background: #07A0C3;
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Check icon */
+.success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: #FFF1D0;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Headings */
+.success-card h1 {
+  color: #FFF1D0;
+  margin-bottom: 10px;
+}
+
+.success-subtitle {
+  color: #FFF1D0;
+  margin-bottom: 24px;
+}
+
+/* Booking ID highlight */
+.success-highlight {
+  background: #DD1C1A;
+  color: #FFF1D0;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+/* Details */
+.success-details {
+  color: #FFF1D0;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.success-details h3 {
+  margin-bottom: 16px;
+}
+
+.detail-row {
+  font-size: 20px;
+  color: #FFF1D0;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-row span {
+  color: #FFF1D0;
+}
+
+/* Actions */
+.success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.success-actions button {
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #DD1C1A;
+  color: #FFF1D0;
+}
+
+.success-actions button.secondary {
+  background: #DD1C1A;
+  color: #FFF1D0;
+}
+
+.success-actions button:hover {
+  opacity: 0.9;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 500px) {
+  .success-card {
+    padding: 36px 26px;
+  }
+
+  .success-actions {
+    flex-direction: column;
+  }
+}
