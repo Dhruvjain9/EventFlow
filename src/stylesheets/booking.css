@@ -1,24 +1,171 @@
-.container {
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
-  border-radius: 10px;
-}
+/* ===============================
+   BOOKING PAGE LAYOUT
+================================ */
 
-
-.Booking-form{
-    padding:20px;
-}
-
-.Booking-form input{
-    padding: 10px;
-    margin: 15px;
-    border-radius: 999px;
-    border-width: 2px;
-}
-
-.Booking-form input[type="radio"]{
+.booking-page {
+    padding: 60px 20px;
     display: flex;
+    justify-content: center;
+}
+
+.booking-card {
+    max-width: 900px;
+    width: 100%;
+    background: #FFF1D0;
+    border-radius: 14px;
+    border: solid #000000;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    overflow: hidden;
+}
+
+/* ===============================
+   EVENT SUMMARY (LEFT)
+================================ */
+
+.booking-summary {
+    background: #DD1C1A;
+    color: #FFF1D0;
+    padding: 40px;
+    border-right: solid #000;
+}
+
+.booking-summary h2 {
+    margin-bottom: 24px;
+}
+
+.summary-item {
+    margin-bottom: 18px;
+}
+
+.summary-item span {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.summary-item strong {
+    font-size: 1.1rem;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Buttons */
+.stepper button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFF1D0;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper button:hover {
+  opacity: 0.9;
+}
+
+.stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Number display */
+.stepper input {
+  width: 50px;
+  height: 36px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  background: #fafafa;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+
+/* ===============================
+   FORM (RIGHT)
+================================ */
+
+.booking-form-wrapper {
+    padding: 40px;
+}
+
+.booking-form-wrapper h1 {
+    color: #DD1C1A;
+    margin-bottom: 24px;
+}
+
+.booking-form-wrapper form {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-form-wrapper label {
+    color: #DD1C1A;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.booking-form-wrapper input[type="text"],
+.booking-form-wrapper input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.booking-form-wrapper .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.booking-form-wrapper button {
+    padding: 14px;
+    background: #DD1C1A;
+    color: #FFF1D0;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ===============================
+   FALLBACK
+================================ */
+
+.booking-fallback {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+    .booking-card {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-summary {
+        padding: 30px;
+    }
+
+    .booking-form-wrapper {
+        padding: 30px;
+    }
 }

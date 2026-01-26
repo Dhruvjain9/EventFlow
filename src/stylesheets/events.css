@@ -1,0 +1,231 @@
+/* ===============================
+   EVENTS – LAYOUT
+================================ */
+
+.events-layout {
+    margin: 60px;
+    padding: 0 20px;
+    display: flex;
+    gap: 24px;
+}
+
+/* ===============================
+   FILTER PANE
+================================ */
+
+.filter-pane {
+  width: 280px;
+  background: #F0C808;
+  border: solid #DD1C1A;
+  border-radius: 12px;
+  padding: 24px;
+  position: sticky;
+  top: 100px;
+}
+
+/* Title */
+.filter-pane h3 {
+  color: #DD1C1A;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* ===============================
+   FILTER GROUP
+================================ */
+
+.filter-group {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-title {
+  color: #DD1C1A;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #DD1C1A;
+  cursor: pointer;
+}
+
+/* Make checkbox visually consistent */
+.checkbox-item input[type="checkbox"] {
+  margin-right: 15px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #DD1C1A;
+}
+
+
+/* Inputs ( Date, Numbers) */
+.filter-pane input[type="date"],
+.filter-pane input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  background: #fafafa;
+}
+
+.filter-pane input::placeholder {
+  color: #999;
+}
+
+/* ===============================
+   PRICE RANGE
+================================ */
+
+.filter-pane label {
+  color: #DD1C1A;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin: 20px 0 10px;
+}
+
+/* Slider */
+.filter-pane input[type="range"] {
+  width: 100%;
+  margin-bottom: 14px;
+  accent-color: #DD1C1A;
+}
+
+/* Min / Max inputs */
+.price-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.price-inputs input {
+  flex: 1;
+}
+
+/* ===============================
+   CLEAR FILTERS BUTTON
+================================ */
+
+.filter-pane button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background: #DD1C1A;
+  color: #FFF1D0;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-pane button:hover {
+  opacity: 0.9;
+}
+
+
+/* ===============================
+   EVENTS LIST
+================================ */
+
+.events-pane {
+    flex: 1;
+}
+
+.events-pane h3 {
+    margin-bottom: 16px;
+}
+
+/* ===============================
+   EVENT CARD
+================================ */
+
+.event-card {
+    background: #F0C808;
+    border: solid #DD1C1A;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.event-details{
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-card h4 {
+    color: #DD1C1A;
+    font-size: 20px;
+    font-weight: 600px;
+    margin: 0 0 8px 0;
+}
+
+.event-card p {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #DD1C1A;
+}
+
+.book-btn a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.book-btn a:hover {
+  transform: translateY(-4px);
+}
+
+
+.event-card a {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 999px;
+    background-color: #DD1C1A;
+    border: #000;
+    margin: 24px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    color: #FFF1D0;
+}
+
+/* ===============================
+   EVENT IMAGE
+================================ */
+
+.event-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+/* ===============================
+   RESPONSIVE – EVENTS
+================================ */
+
+@media (max-width: 900px) {
+    .events-layout {
+        flex-direction: column;
+    }
+
+    .filter-pane {
+        width: 100%;
+    }
+
+    .hero-carousel h1 {
+        font-size: 2.2rem;
+    }
+}

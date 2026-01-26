@@ -1,9 +1,10 @@
 <?php
+// Define your database details here.
 
-$db_hostname = ;    // Define database hostname
-$db_username = ;  // Define database username
-$db_password = ;  // Define database password
-$db_name = ;    // Define database name
+$db_hostname = "";
+$db_username = "";
+$db_password = "";
+$db_name = "";
 
 $conn = mysqli_connect($db_hostname,$db_username,$db_password,$db_name);
 

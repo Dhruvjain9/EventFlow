@@ -1,0 +1,108 @@
+/* ===============================
+   HOME – HERO CAROUSAL
+================================ */
+
+.btn{
+  background-color: #FFF1D0;
+  margin: 20px;
+  font-size: 15px;
+  border-style: solid;
+}
+
+#signup.btn {
+  background-color: #DD1C1A;
+  border: solid #DD1C1A;
+  color: #FFF1D0;
+}
+
+#signup.btn:hover {
+  background-color: #FFF1D0;
+  color: #DD1C1A;
+}
+
+/* ===============================
+   HOME – FEATURES
+================================ */
+.feature-image {
+  border-radius: 10px;
+  width: auto;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.feature h3 {
+  color: #DD1C1A;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.feature p {
+  color: #DD1C1A;
+  font-size: 15px;
+}
+
+.features {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+}
+
+.feature {
+  background: #F0C808;
+  border: solid #000000;
+  border-radius: 8px;
+  padding: 38px;
+  text-align: center;
+}
+
+/* ===============================
+   HOME – CTA
+================================ */
+
+.cta {
+  max-width: 1000px;
+  margin: 60px auto 100px;
+  background: #F0C808;
+  border: solid #000000;
+  border-radius: 12px;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta h2 {
+  color: #DD1C1A;
+  font-size: 30px;
+  margin-bottom: 24px;
+}
+
+.cta button {
+  background: #DD1C1A;
+  color: #FFF1D0;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===============================
+   RESPONSIVE – HOME
+================================ */
+
+@media (max-width: 900px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .cta h2 {
+    font-size: 25px;
+  }
+}
