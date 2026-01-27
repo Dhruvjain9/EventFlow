@@ -6,7 +6,7 @@ EventFlow is a full-stack event discovery and booking platform that allows users
 
 ## 📌 Current Version
 
-* **Version:** v1.3.0
+* **Version:** v1.3.1
 * **Status:** Active development (v1.x lifecycle)
 
 ---
