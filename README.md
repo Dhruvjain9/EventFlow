@@ -114,6 +114,7 @@ EventFlow is a full-stack event discovery and booking platform that allows users
 * `Login` – Authentication (sign in / sign up)
 * `Booking` – Ticket booking flow
 * `BookingSuccess` – Booking confirmation
+* `About` - About the project and me
 
 ---
 
