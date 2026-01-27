@@ -200,15 +200,20 @@ function Login() {
                       required
                     />
                     
-                    {error && <p className="auth-error">{error}</p>}
-
                     <button
                       type="button"
                       className="next-btn"
-                      onClick={(password && name && email) ? setStep(2): console.log("Enter complete details")} 
+                      onClick={() => {
+                        if (password && name && email) {
+                          setStep(2);
+                        } else {
+                          console.log("Enter complete details");
+                        }
+                      }}
                     >
                       Next →
                     </button>
+
                   </div>
 
                   {/* SLIDE 2 */}
