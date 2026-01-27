@@ -1,4 +1,29 @@
 /* ===============================
+   HERO
+================================ */
+
+.events-hero {
+  max-width: 1000px;
+  margin: 0 auto 90px;
+  text-align: center;
+  color: #DD1C1A;
+}
+
+.events-hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.events-hero p {
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* ===============================
    EVENTS – LAYOUT
 ================================ */
 
@@ -177,27 +202,23 @@
     color: #DD1C1A;
 }
 
-.book-btn a {
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.book-btn a:hover {
-  transform: translateY(-4px);
-}
-
-
 .event-card a {
     font-size: 20px;
     padding: 10px;
     border-radius: 999px;
     background-color: #DD1C1A;
-    border: #000;
+    border: solid #FFF1D0;
     margin: 24px;
     display: inline-block;
     text-decoration: none;
     font-weight: 600;
     color: #FFF1D0;
+  transition: transform 0.2s ease;
+
+}
+
+.event-card a:hover {
+  transform: translateY(-4px);
 }
 
 /* ===============================

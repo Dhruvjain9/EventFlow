@@ -30,14 +30,14 @@ if (!$data) {
 }
 
 /*$name         = $data["name"]*/
+$user_id      = $data["user_id"];
 $event_id     = $data["event_id"] ?? null;
 $email        = trim($data["email"] ?? null);
 
-/*Number of tickets is Hard-Coded*/
 $tickets_sold = $data["tickets"] ?? 1;
 
 /* Validate */
-if (!$event_id || !$email || !$tickets_sold) {
+if (!$event_id || !$email || !$tickets_sold || !$user_id) {
     http_response_code(400);
 
     echo json_encode(["error" => "Missing required fields"]);
@@ -62,12 +62,19 @@ $booking_date = date("Y-m-d");
 
 /* Insert booking */
 $stmt = $conn->prepare(
-    "INSERT INTO bookings (event_id, email, Tickets_sold, Booking_date)
-     VALUES (?, ?, ?, ?)"
+    "INSERT INTO bookings (user_id, event_id, email, Tickets_sold, Booking_date)
+     VALUES (?, ?, ?, ?, ?)"
 );
 
+$eventUpdate = $conn->prepare(
+    "UPDATE event_data SET TICKETS_SOLD = TICKETS_SOLD + ? WHERE event_id = ?"
+);
+
+$eventUpdate->bind_param("ii",$tickets_sold, $event_id);
+
 $stmt->bind_param(
-    "isis",
+    "iisis",
+    $user_id,
     $event_id,
     $email,
     $tickets_sold,
@@ -79,6 +86,7 @@ if ($stmt->execute()) {
         "success" => true,
         "booking_id" => $stmt->insert_id
     ]);
+    $eventUpdate->execute();
 } else {
     http_response_code(500);
     echo json_encode(["error" => "Booking failed"]);

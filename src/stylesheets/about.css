@@ -1,0 +1,123 @@
+/* ===============================
+   ABOUT PAGE – BASE
+================================ */
+
+.about-page {
+  background-color: #FFF1D0;
+  padding: 80px 20px 120px;
+  color: #DD1C1A;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.about-hero {
+  max-width: 1000px;
+  margin: 0 auto 90px;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.about-hero p {
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* ===============================
+   GENERIC CONTENT BLOCK
+================================ */
+
+.about-block {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  background: #F0C808;
+  border: 2px solid #DD1C1A;
+  border-radius: 14px;
+  padding: 42px;
+}
+
+.about-block p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* ===============================
+   ABOUT ME – SPLIT LAYOUT
+================================ */
+
+.about-me {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 48px;
+  align-items: center;
+
+  background: #F0C808;
+  border: 2px solid #DD1C1A;
+  border-radius: 16px;
+  padding: 48px;
+}
+
+/* IMAGE */
+
+.about-me-image img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid #DD1C1A;
+}
+
+/* CONTENT */
+
+.about-me-content h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.about-me-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .about-me {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 32px;
+  }
+
+  .about-me-image img {
+    height: 260px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero h1 {
+    font-size: 42px;
+  }
+
+  .about-block,
+  .about-me {
+    padding: 28px;
+  }
+}

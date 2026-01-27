@@ -11,6 +11,8 @@ function Booking() {
   const [email, setEmail] = useState("");
   const [agree, setAgree] = useState(false);
   const [tickets, setTickets] = useState(1);
+  const user = JSON.parse(localStorage.getItem("user"));
+
 
   if (!selectedEvent) {
     return <Navigate to="/*" replace />;
@@ -28,7 +30,8 @@ function Booking() {
       name,
       email,
       event_id: selectedEvent.event_id,
-      tickets
+      tickets,
+      user_id: user.id
     };
 
     try {

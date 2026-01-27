@@ -1,21 +1,22 @@
 /* ===============================
-   HOME – HERO CAROUSAL
+   HOME – HERO CAROUSEL
 ================================ */
 
-.btn{
+.hero-carousel .btn {
   background-color: #FFF1D0;
   margin: 20px;
   font-size: 15px;
-  border-style: solid;
+  border: solid;
 }
 
-#signup.btn {
+/* Signup button */
+.hero-carousel .btn#signup {
   background-color: #DD1C1A;
   border: solid #DD1C1A;
   color: #FFF1D0;
 }
 
-#signup.btn:hover {
+.hero-carousel .btn#signup:hover {
   background-color: #FFF1D0;
   color: #DD1C1A;
 }
@@ -23,24 +24,6 @@
 /* ===============================
    HOME – FEATURES
 ================================ */
-.feature-image {
-  border-radius: 10px;
-  width: auto;
-  height: 200px;
-  object-fit: contain;
-  margin-bottom: 16px;
-}
-
-.feature h3 {
-  color: #DD1C1A;
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.feature p {
-  color: #DD1C1A;
-  font-size: 15px;
-}
 
 .features {
   max-width: 1200px;
@@ -57,6 +40,24 @@
   border-radius: 8px;
   padding: 38px;
   text-align: center;
+}
+
+.feature-image {
+  border-radius: 10px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.feature h3 {
+  color: #DD1C1A;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.feature p {
+  color: #DD1C1A;
+  font-size: 15px;
 }
 
 /* ===============================
@@ -98,7 +99,7 @@
     grid-template-columns: 1fr;
   }
 
-  .hero h1 {
+  .hero-carousel h1 {
     font-size: 40px;
   }
 
