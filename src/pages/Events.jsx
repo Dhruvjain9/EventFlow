@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useState, useEffect, use } from "react";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import "../stylesheets/events.css";
 
@@ -44,6 +45,7 @@ function Events() {
   const [maxPrice, setMaxPrice] = useState(100);
   const [searchParams, setSearchParams] = useSearchParams();
 
+
   const toggleCity = (cityName) => {
     setCities((prev) =>
         prev.includes(cityName)
@@ -52,6 +54,7 @@ function Events() {
     );
   };
 
+  const user = JSON.parse(localStorage.getItem("user"));
 
 
   // fetch events whenever filters change (SERVER-SIDE FILTERING)
@@ -98,27 +101,13 @@ function Events() {
   return (
     <main>
     {/* HERO SLIDESHOW */}
-    <section className="hero-carousel">
-    <div className="slides">
-        {slides.map((slide, index) => (
-        <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-            style={{
-            backgroundImage: `url(${slide.image})`,
-            }}
-        >
-            <div className="overlay">
-            <h1>{slide.title}</h1>
-            <p>{slide.subtitle}</p>
-            <Link to="/#events" className="btn">
-                Browse Events
-            </Link>
-            </div>
-        </div>
-        ))}
-    </div>
-    </section>
+      <section className="events-hero">
+        <h1>Events</h1>
+        <p>
+          EventFlow is a practical exploration of how real-world web applications are designed,
+          built, and refined through hands-on experience.
+        </p>
+      </section>
 
 
       {/* FILTER + EVENTS */}
@@ -225,7 +214,7 @@ function Events() {
                     <p>Price: ${event.TICKET_PRICE}</p>
                   </div>
                   <div className="book-btn">
-                  <Link to="/booking" state={{ event }}>Book Now</Link>
+                  <Link to={user?"/booking":"/login"} state={{ event }}>Book Now</Link>
                   </div>
                 </div>
               </div>

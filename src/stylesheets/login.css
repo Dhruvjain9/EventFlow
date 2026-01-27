@@ -1,0 +1,162 @@
+/* ===============================
+   AUTH PAGE
+================================ */
+
+.auth-page {
+  min-height: 100vh;
+  background: #f6f7fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* LEFT INFO SIDE */
+.auth-info {
+  background: #086788;
+  color: #ffffff;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-info h2 {
+  margin-bottom: 14px;
+}
+
+.auth-info p {
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+/* Outline button */
+.auth-info button.outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* RIGHT FORM SIDE */
+.auth-form {
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form h1 {
+  color: #086788;
+  margin-bottom: 24px;
+}
+
+/* Form */
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form input {
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 0.95rem;
+}
+
+.auth-form button {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-error{
+  color: #dd1c1a;
+  margin: auto 0 ;
+}
+
+/* ===============================
+   SIGNUP SLIDER
+================================ */
+
+.signup-form {
+  overflow: hidden;
+  width: 100%;
+}
+
+.signup-slider {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.signup-slide {
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Buttons */
+.next-btn,
+.back-btn {
+  background: transparent;
+  border: 1px solid #DD1C1A;
+  color: #DD1C1A;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.signup-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.signup-actions button[type="submit"] {
+  background: #DD1C1A;
+  color: #FFF1D0;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-info {
+    text-align: center;
+  }
+}
