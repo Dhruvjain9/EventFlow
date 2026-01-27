@@ -1,6 +1,5 @@
 import { useState, useEffect, use } from "react";
 import { Link, useSearchParams, useLocation } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 
 import "../stylesheets/events.css";
 
@@ -227,3 +226,4 @@ function Events() {
 }
 
 export default Events;
+
