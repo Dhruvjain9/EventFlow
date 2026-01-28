@@ -1,6 +1,5 @@
-import { Link, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 // Styles
 import "./App.css";
@@ -13,6 +12,7 @@ import BookingSuccess from "./pages/BookingSuccess";
 import Events from "./pages/Events";
 import Login from "./pages/Login";
 import About from "./pages/About";
+import Payment from "./pages/Payments";
 
 //support pages
 import NotFound from "./error/NotFound";
@@ -88,7 +88,8 @@ function App() {
             <Route path="/BookingSuccess" element={<BookingSuccess />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/About" element={<About/>} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Payment" element={<Payment />}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </section>
