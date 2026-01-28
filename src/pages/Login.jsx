@@ -48,7 +48,7 @@ function Login() {
         console.log("Location permission denied");
       }
     );
-  };
+
 
 
   const handleSubmit = async (e) => {
