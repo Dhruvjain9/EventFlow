@@ -1,121 +1,146 @@
 /* ===============================
-   BOOKING SUCCESS PAGE
+   SUCCESS PAGE – BASE
 ================================ */
 
 .success-page {
   min-height: 100vh;
-  background: #FFF1D0;
+  background: #fff1d0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 40px 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* ===============================
+   CARD
+================================ */
+
 .success-card {
-  background: #07A0C3;
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 18px;
   padding: 48px 40px;
   max-width: 520px;
   width: 100%;
   text-align: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  animation: popIn 0.4s ease;
 }
 
-/* Check icon */
+/* Entry animation */
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   ICON
+================================ */
+
 .success-icon {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  background: #16a34a;
-  color: #FFF1D0;
-  font-size: 2.5rem;
+  background: #0b6477;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: bold;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Headings */
+/* ===============================
+   TEXT
+================================ */
+
 .success-card h1 {
-  color: #FFF1D0;
-  margin-bottom: 10px;
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #0b6477;
 }
 
 .success-subtitle {
-  color: #FFF1D0;
+  font-size: 16px;
+  opacity: 0.8;
   margin-bottom: 24px;
 }
 
-/* Booking ID highlight */
+/* ===============================
+   BOOKING ID
+================================ */
+
 .success-highlight {
-  background: #DD1C1A;
-  color: #FFF1D0;
+  background: #f0c808;
+  border: 2px dashed #dd1c1a;
+  border-radius: 10px;
   padding: 14px;
-  border-radius: 8px;
+  font-size: 16px;
   margin-bottom: 28px;
-  font-size: 0.95rem;
 }
 
-/* Details */
+/* ===============================
+   DETAILS
+================================ */
+
 .success-details {
-  color: #FFF1D0;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .success-details h3 {
+  font-size: 20px;
   margin-bottom: 16px;
+  color: #dd1c1a;
 }
 
 .detail-row {
-  font-size: 20px;
-  color: #FFF1D0;
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  font-size: 15px;
 }
 
-.detail-row span {
-  color: #FFF1D0;
-}
+/* ===============================
+   ACTIONS
+================================ */
 
-/* Actions */
 .success-actions {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  justify-content: center;
 }
 
 .success-actions button {
-  padding: 12px 22px;
-  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 10px;
   border: none;
-  font-weight: 600;
   cursor: pointer;
-  background: #DD1C1A;
-  color: #FFF1D0;
+  font-weight: 600;
 }
 
-.success-actions button.secondary {
-  background: #DD1C1A;
-  color: #FFF1D0;
+/* Primary */
+.success-actions button {
+  background: #dd1c1a;
+  color: #fff1d0;
 }
 
 .success-actions button:hover {
   opacity: 0.9;
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 500px) {
-  .success-card {
-    padding: 36px 26px;
-  }
-
-  .success-actions {
-    flex-direction: column;
-  }
+/* Secondary */
+.success-actions .secondary {
+  background: transparent;
+  color: #dd1c1a;
+  border: 2px solid #dd1c1a;
 }
