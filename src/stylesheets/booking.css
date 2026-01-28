@@ -1,155 +1,181 @@
 /* ===============================
-   BOOKING PAGE LAYOUT
+   BASE
 ================================ */
 
 .booking-page {
-    padding: 60px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.booking-card {
-    max-width: 900px;
-    width: 100%;
-    background: #FFF1D0;
-    border-radius: 14px;
-    border: solid #000000;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    overflow: hidden;
+  background: #fff1d0;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===============================
-   EVENT SUMMARY (LEFT)
+   HERO HEADER (STATIC FEEL)
 ================================ */
 
-.booking-summary {
-    background: #DD1C1A;
-    color: #FFF1D0;
-    padding: 40px;
-    border-right: solid #000;
+.booking-hero {
+  background: #0b6477;
+  color: #fff;
+  padding: 60px 20px;
 }
 
-.booking-summary h2 {
-    margin-bottom: 24px;
+.booking-hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
 }
 
-.summary-item {
-    margin-bottom: 18px;
-}
-
-.summary-item span {
-    display: block;
-    font-size: 0.85rem;
-    opacity: 0.75;
-}
-
-.summary-item strong {
-    font-size: 1.1rem;
-}
-
-.stepper {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-/* Buttons */
-.stepper button {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background-color: #000;
-  color: #FFF1D0;
-  border: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stepper button:hover {
+.booking-hero p {
+  font-size: 18px;
   opacity: 0.9;
 }
 
-.stepper button:disabled {
+/* ===============================
+   MAIN LAYOUT
+================================ */
+
+.booking-content {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+/* ===============================
+   LEFT COLUMN
+================================ */
+
+.booking-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Shared card */
+.card {
+  background: #f0c808;
+  border: 2px solid #dd1c1a;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.card h2 {
+  color: #dd1c1a;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+/* Detail rows */
+.event-detail-row {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* ===============================
+   TICKET STEPPER
+================================ */
+
+.ticket-stepper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ticket-stepper span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #dd1c1a;
+}
+
+.ticket-stepper button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #dd1c1a;
+  color: #fff1d0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ticket-stepper button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-/* Number display */
-.stepper input {
-  width: 50px;
-  height: 36px;
-  text-align: center;
+/* ===============================
+   RIGHT COLUMN – RECEIPT
+================================ */
+
+.booking-right {
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+}
+
+.receipt {
+  background: #ffffff;
+  border: 2px dashed #dd1c1a;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.receipt h2 {
+  color: #dd1c1a;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Receipt rows */
+.receipt-row,
+.receipt-total {
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.receipt-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 16px 0;
+}
+
+.receipt-total {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* CTA */
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #dd1c1a;
+  color: #fff1d0;
+  border: none;
   border-radius: 8px;
-  border: 1px solid #dcdcdc;
-  background: #fafafa;
+  font-size: 16px;
   font-weight: 600;
-  font-size: 1rem;
+  cursor: pointer;
 }
 
-
-/* ===============================
-   FORM (RIGHT)
-================================ */
-
-.booking-form-wrapper {
-    padding: 40px;
+.checkout-btn:hover {
+  opacity: 0.9;
 }
 
-.booking-form-wrapper h1 {
-    color: #DD1C1A;
-    margin-bottom: 24px;
-}
-
-.booking-form-wrapper form {
-    display: flex;
-    flex-direction: column;
-}
-
-.booking-form-wrapper label {
-    color: #DD1C1A;
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-}
-
-.booking-form-wrapper input[type="text"],
-.booking-form-wrapper input[type="email"] {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-.booking-form-wrapper .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.booking-form-wrapper button {
-    padding: 14px;
-    background: #DD1C1A;
-    color: #FFF1D0;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* ===============================
-   FALLBACK
-================================ */
-
-.booking-fallback {
-    padding: 80px 20px;
-    text-align: center;
+.secure-text {
+  color: #dd1c1a;
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.7;
 }
 
 /* ===============================
@@ -157,15 +183,11 @@
 ================================ */
 
 @media (max-width: 900px) {
-    .booking-card {
-        grid-template-columns: 1fr;
-    }
+  .booking-content {
+    grid-template-columns: 1fr;
+  }
 
-    .booking-summary {
-        padding: 30px;
-    }
-
-    .booking-form-wrapper {
-        padding: 30px;
-    }
+  .booking-right {
+    position: static;
+  }
 }

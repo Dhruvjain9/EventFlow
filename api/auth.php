@@ -102,7 +102,7 @@ if ($mode === "signup") {
 else if ($mode === "signin") {
 
     $stmt = $conn->prepare(
-        "SELECT User_ID, Name, email, Password, Role
+        "SELECT *
          FROM users
          WHERE email = ?"
     );
@@ -140,6 +140,7 @@ else if ($mode === "signin") {
 
     $userId = $user["User_ID"];
     $name   = $user["Name"];
+    $age    = $user["Age"];
 }
 
 /* ===================== INVALID MODE ===================== */
@@ -167,7 +168,8 @@ echo json_encode([
     "user" => [
         "id" => $userId,
         "email" => $email,
-        "name" => $name
+        "name" => $name,
+        "age" => $age
     ],
     "token" => $token
 ]);
