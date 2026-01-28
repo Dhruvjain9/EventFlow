@@ -1,5 +1,5 @@
-import { useState, useEffect, use } from "react";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 
 import "../stylesheets/events.css";
 
@@ -22,16 +22,6 @@ function Events() {
         subtitle: "Create memories with friends and family",
     },
   ];
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
 
   const [events, setEvents] = useState([]);
@@ -226,3 +216,6 @@ function Events() {
 }
 
 export default Events;
+
+
+

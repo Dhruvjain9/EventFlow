@@ -16,7 +16,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState(0);
   const [country, setCountry] = useState("");
-  const [locationError, setLocationError] = useState("");
   
   // UI state
   const [error, setError] = useState("");
@@ -26,12 +25,6 @@ function Login() {
     setStep(1);
   }, [mode]);
 
-
-  const getUserCountry = () => {
-    if (!navigator.geolocation) {
-      setLocationError("Geolocation not supported");
-      return;
-    }
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -46,18 +39,16 @@ function Login() {
 
           if (data?.address?.country) {
             setCountry(data.address.country);
-          } else {
-            setLocationError("Unable to detect country");
           }
         } catch (err) {
-          setLocationError("Failed to fetch location");
+          console.log("Could not get location!");
         }
       },
       () => {
-        setLocationError("Location permission denied");
+        console.log("Location permission denied");
       }
     );
-  };
+
 
 
   const handleSubmit = async (e) => {
@@ -259,3 +250,4 @@ function Login() {
 }
 
 export default Login;
+
