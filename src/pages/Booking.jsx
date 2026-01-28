@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { Navigate, useNavigate, useLocation, Link } from "react-router-dom";
 import "../stylesheets/booking.css";
 
 function Booking() {
@@ -149,4 +149,3 @@ function Booking() {
 }
 
 export default Booking;
-
