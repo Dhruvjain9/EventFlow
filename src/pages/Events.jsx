@@ -1,5 +1,5 @@
-import { useState, useEffect, use } from "react";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 
 import "../stylesheets/events.css";
 
@@ -226,4 +226,5 @@ function Events() {
 }
 
 export default Events;
+
 
