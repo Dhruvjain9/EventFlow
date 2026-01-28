@@ -23,16 +23,6 @@ function Events() {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
 
   const [events, setEvents] = useState([]);
 
@@ -226,5 +216,6 @@ function Events() {
 }
 
 export default Events;
+
 
 
