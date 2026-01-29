@@ -71,13 +71,13 @@ function Events() {
         if (maxPrice !== null) urlparams.max_price = maxPrice;
 
         setSearchParams(urlparams);
-        
+
         console.log("API =", API);
 
         const res = await fetch(
           `${API}/getEvents.php?${params.toString()}`
         );
-
+        console.log(res);
         if (!res.ok) throw new Error("Failed to fetch events");
 
         const data = await res.json();
