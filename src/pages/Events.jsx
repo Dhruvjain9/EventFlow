@@ -71,6 +71,8 @@ function Events() {
         if (maxPrice !== null) urlparams.max_price = maxPrice;
 
         setSearchParams(urlparams);
+        
+        console.log("API =", API);
 
         const res = await fetch(
           `${API}/getEvents.php?${params.toString()}`
