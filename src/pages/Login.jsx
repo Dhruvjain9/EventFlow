@@ -21,6 +21,8 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const API = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
     setStep(1);
   }, [mode]);
@@ -62,7 +64,7 @@ function Login() {
         : { name, email, password, age, country };
 
     try {
-      const res = await fetch("http://localhost/api/auth.php", {
+      const res = await fetch(`${API}/auth.php`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

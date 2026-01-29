@@ -34,6 +34,7 @@ function Events() {
   const [maxPrice, setMaxPrice] = useState(100);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const API = import.meta.env.VITE_API_BASE_URL;
 
   const toggleCity = (cityName) => {
     setCities((prev) =>
@@ -71,7 +72,7 @@ function Events() {
         setSearchParams(urlparams);
 
         const res = await fetch(
-          `http://localhost/api/getEvents.php?${params.toString()}`
+          `${API}/getEvents.php?${params.toString()}`
         );
 
         if (!res.ok) throw new Error("Failed to fetch events");

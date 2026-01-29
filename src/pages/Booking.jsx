@@ -13,6 +13,7 @@ function Booking() {
   const [tickets, setTickets] = useState(1);
   const user = JSON.parse(localStorage.getItem("user"));
 
+  const API = import.meta.env.VITE_API_BASE_URL;
 
   if (!selectedEvent) {
     return <Navigate to="/*" replace />;
@@ -35,7 +36,7 @@ function Booking() {
     };
 
     try {
-      const res = await fetch("http://localhost/api/submitBooking.php", {
+      const res = await fetch(`${API}/submitBooking.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
