@@ -34,7 +34,8 @@ function Events() {
   const [maxPrice, setMaxPrice] = useState(100);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const API = import.meta.env.VITE_API_BASE_URL;
+  const API = process.env.REACT_APP_API_BASE_URL;
+
 
   const toggleCity = (cityName) => {
     setCities((prev) =>

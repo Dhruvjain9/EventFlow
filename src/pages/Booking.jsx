@@ -13,7 +13,7 @@ function Booking() {
   const [tickets, setTickets] = useState(1);
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const API = import.meta.env.VITE_API_BASE_URL;
+  const API = process.env.REACT_APP_API_BASE_URL;
 
   if (!selectedEvent) {
     return <Navigate to="/*" replace />;
