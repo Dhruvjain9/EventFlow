@@ -70,12 +70,12 @@ function Events() {
         if (minPrice !== null) urlparams.min_price = minPrice;
         if (maxPrice !== null) urlparams.max_price = maxPrice;
 
-        //setSearchParams(urlparams);
+        setSearchParams(urlparams);
 
         console.log("API =", API);
 
         const res = await fetch(
-          `${API}/getEvents.php?${params.toString()}`
+          `/api/events?${params.toString()}`
         );
         console.log(res);
         if (!res.ok) throw new Error("Failed to fetch events");
