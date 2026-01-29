@@ -70,7 +70,7 @@ function Events() {
         if (minPrice !== null) urlparams.min_price = minPrice;
         if (maxPrice !== null) urlparams.max_price = maxPrice;
 
-        setSearchParams(urlparams);
+        //setSearchParams(urlparams);
 
         console.log("API =", API);
 
