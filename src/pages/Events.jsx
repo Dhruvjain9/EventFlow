@@ -71,7 +71,7 @@ function Events() {
         setSearchParams(urlparams);
 
         const res = await fetch(
-          `http://localhost/api/getEvents.php?${params.toString()}`
+          `https://eventflow-backend-production-6fc4.up.railway.app/getEvents.php?${params.toString()}`
         );
 
         if (!res.ok) throw new Error("Failed to fetch events");
@@ -185,22 +185,22 @@ function Events() {
             <p>No events found</p>
           ) : (
             events.map((event) => (
-              <div key={event.event_id} className="event-card">
-                {event.ORIGINALCOVER && (
+              <div key={event.eventId} className="event-card">
+                {event.imgUrl && (
                   <img
-                    src={event.img_url}
+                    src={event.imgUrl}
                     alt="Event cover"
                     className="event-image"
                   />
                 )}
                 <div className="event-details">
                   <div>
-                    <h4>{event.VENUE}</h4>
-                    <p>Date: {event.DATE}</p>
+                    <h4>{event.venue}</h4>
+                    <p>Date: {event.date}</p>
                     <p>
-                      Tickets : {event.TICKETS_SOLD} / {event.CAPACITY}
+                      Tickets : {event.ticketsSold} / {event.capacity}
                     </p>
-                    <p>Price: ${event.TICKET_PRICE}</p>
+                    <p>Price: ${event.ticketPrice}</p>
                   </div>
                   <div className="book-btn">
                   <Link to={user?"/booking":"/login"} state={{ event }}>Book Now</Link>
