@@ -72,17 +72,17 @@ function Booking() {
 
           <div className="summary-item">
             <span>Venue</span>
-            <strong>{selectedEvent.VENUE}</strong>
+            <strong>{selectedEvent.venue}</strong>
           </div>
 
           <div className="summary-item">
             <span>Date</span>
-            <strong>{selectedEvent.DATE}</strong>
+            <strong>{selectedEvent.date}</strong>
           </div>
 
           <div className="summary-item">
             <span>Ticket Price</span>
-            <strong>${selectedEvent.TICKET_PRICE}</strong>
+            <strong>${selectedEvent.ticketPrice}</strong>
           </div>
 
           <div className="stepper">
