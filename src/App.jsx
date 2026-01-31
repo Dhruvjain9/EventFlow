@@ -20,6 +20,7 @@ import NotFound from "./error/NotFound";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const isPaymentPage = location.pathname === "/Payment";
   const user = JSON.parse(localStorage.getItem("user"));
 
 
@@ -62,7 +63,12 @@ function App() {
                   {/*<Link to="/profile">Edit Profile</Link>
                   <Link to="/my-bookings">My Bookings</Link>*/}
                   <button
+                    disabled={isPaymentPage}
+                    className={isPaymentPage ? "logout-disabled" : ""}
+                    title={isPaymentPage ? "Finish payment before logging out" : ""}
                     onClick={() => {
+                      if (isPaymentPage) return;
+
                       localStorage.removeItem("user");
                       localStorage.removeItem("auth_token");
                       setIsLoggedIn(false);
@@ -70,6 +76,7 @@ function App() {
                   >
                     Logout
                   </button>
+
                 </div>
               </div>
             )}
