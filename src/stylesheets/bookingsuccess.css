@@ -103,6 +103,7 @@
 }
 
 .detail-row {
+  color: #fff1d0;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
