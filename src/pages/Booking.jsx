@@ -15,7 +15,7 @@ function Booking() {
     return <Navigate to="/*" replace />;
   }
 
-  const totalPrice = tickets * event.TICKET_PRICE;
+  const totalPrice = tickets * event.ticketPrice;
 
   const proceedToPayment = () => {
     navigate("/payment", {
@@ -46,17 +46,17 @@ function Booking() {
 
             <div className="event-detail-row">
               <span>Location</span>
-              <strong>{event.VENUE}</strong>
+              <strong>{event.venue}</strong>
             </div>
 
             <div className="event-detail-row">
               <span>Date</span>
-              <strong>{event.DATE}</strong>
+              <strong>{event.date}</strong>
             </div>
 
             <div className="event-detail-row">
               <span>Price per ticket</span>
-              <strong>${event.TICKET_PRICE}</strong>
+              <strong>${event.ticketPrice}</strong>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ function Booking() {
               <span>
                 {tickets} × Ticket
               </span>
-              <span>${event.TICKET_PRICE}</span>
+              <span>${event.ticketPrice}</span>
             </div>
 
             <div className="receipt-divider" />
