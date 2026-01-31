@@ -151,3 +151,102 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===============================
+   MOBILE – PAYMENT PAGE
+================================ */
+
+@media (max-width: 600px) {
+
+  /* ---------- PAGE ---------- */
+
+  .payment-page {
+    padding-bottom: 60px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .payment-hero {
+    height: auto;
+    padding: 30px 16px 20px;
+    margin-bottom: 24px;
+  }
+
+  .payment-hero h1 {
+    font-size: 28px;
+  }
+
+  .payment-hero p {
+    font-size: 14px;
+  }
+
+  /* ---------- CONTAINER ---------- */
+
+  .payment-container {
+    padding: 0 16px;
+    gap: 20px;
+  }
+
+  /* ---------- PAYMENT FORM ---------- */
+
+  .payment-form {
+    padding: 20px;
+  }
+
+  .payment-form h2 {
+    font-size: 18px;
+  }
+
+  /* Tabs stack nicely */
+  .payment-tabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .payment-tabs button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .payment-form label {
+    font-size: 13px;
+  }
+
+  .payment-form input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* Rows collapse to column */
+  .payment-form .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .payment-form button {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  /* ---------- SUMMARY ---------- */
+
+  .payment-summary {
+    padding: 20px;
+  }
+
+  .payment-summary h2 {
+    font-size: 18px;
+  }
+
+  .summary-row {
+    font-size: 14px;
+  }
+
+  .summary-total {
+    font-size: 16px;
+  }
+
+  .secure-note {
+    font-size: 12px;
+  }
+}

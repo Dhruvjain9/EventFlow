@@ -327,3 +327,112 @@ nav {
     text-align: center;
   }
 }
+
+/* ===============================
+   MOBILE RESPONSIVE – APP LAYOUT
+================================ */
+
+@media (max-width: 600px) {
+
+  /* ---------- NAVBAR ---------- */
+
+  nav {
+    padding: 10px 14px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .signup-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .greet-profile {
+    display: none; /* save space on mobile */
+  }
+
+  .profile-icon {
+    font-size: 30px;
+  }
+
+  /* Dropdown – touch friendly */
+  .profile-dropdown {
+    top: 44px;
+    min-width: 140px;
+  }
+
+  .profile-dropdown a,
+  .profile-dropdown button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  /* ---------- HERO CAROUSEL ---------- */
+
+  .hero-carousel {
+    height: 450px;
+    min-height: 420px;
+  }
+
+  .hero-carousel .overlay {
+    height: 100%;
+    padding: 0 16px;
+  }
+
+  .hero-carousel h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-carousel p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  /* Buttons stack vertically */
+  .btn-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-carousel .btn {
+    width: 100%;
+    max-width: 260px;
+    text-align: center;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  .site-footer {
+    margin-top: 60px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 16px;
+    text-align: center;
+  }
+
+  .footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    padding: 16px;
+  }
+}
+

@@ -23,7 +23,7 @@ function Events() {
     },
   ];
 
-
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -107,8 +107,11 @@ function Events() {
       {/* FILTER + EVENTS */}
       <section className="events-layout" id="events">
         {/* FILTER PANE */}
-        <div className="filter-pane">
-        <h3>Filters</h3>
+        <div className={`filter-pane ${filtersOpen ? "open" : ""}`}>
+        <h3 onClick={() => setFiltersOpen(prev => !prev)}>
+          Filters
+        </h3>
+
 
         {/* City – text input */}
         <div className="filter-group">

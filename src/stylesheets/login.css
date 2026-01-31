@@ -117,6 +117,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  font-size: 20px;
+  color: #086788;
 }
 
 /* Buttons */
@@ -158,5 +160,133 @@
 
   .auth-info {
     text-align: center;
+  }
+}
+
+/* ===============================
+   MOBILE – AUTH PAGE + 2 STEP SIGNUP
+================================ */
+
+@media (max-width: 600px) {
+
+  /* ---------- PAGE ---------- */
+
+  .auth-page {
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  /* ---------- CARD ---------- */
+
+  .auth-card {
+    border-radius: 14px;
+    box-shadow: none;
+  }
+
+  /* ---------- INFO SECTION ---------- */
+
+  .auth-info {
+    padding: 32px 20px;
+    text-align: center;
+  }
+
+  .auth-info h2 {
+    font-size: 22px;
+  }
+
+  .auth-info p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .auth-info button.outline {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* ---------- FORM ---------- */
+
+  .auth-form {
+    padding: 32px 20px;
+  }
+
+  .auth-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .auth-form form {
+    gap: 14px;
+  }
+
+  .auth-form input {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .auth-form button {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .auth-error {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* ===============================
+     2 STEP SIGNUP (MOBILE)
+  ============================== */
+
+  .signup-form {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .signup-slider {
+    width: 200%;
+    display: flex;
+    transition: transform 0.45s ease-in-out;
+  }
+
+  .signup-slide {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Step label */
+  .signup-slide::before {
+    content: attr(data-step);
+    font-size: 12px;
+    font-weight: 600;
+    color: #dd1c1a;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* ---------- ACTIONS ---------- */
+
+  .signup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .next-btn,
+  .back-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .signup-actions button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
   }
 }
