@@ -4,7 +4,7 @@
 
 .auth-page {
   min-height: 100vh;
-  background: #f6f7fb;
+  background: #FFF1D0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@
 .auth-card {
   width: 100%;
   max-width: 900px;
-  background: #ffffff;
+  background: #FFF1D0;
   border-radius: 18px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -26,7 +26,7 @@
 /* LEFT INFO SIDE */
 .auth-info {
   background: #086788;
-  color: #ffffff;
+  color: #FFF1D0;
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
@@ -45,8 +45,8 @@
 /* Outline button */
 .auth-info button.outline {
   background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
+  color: #FFF1D0;
+  border: 2px solid #FFF1D0;
   padding: 12px 20px;
   border-radius: 999px;
   font-weight: 600;
@@ -86,7 +86,7 @@
   border-radius: 8px;
   border: none;
   background: #000;
-  color: #fff;
+  color: #FFF1D0;
   font-weight: 600;
   cursor: pointer;
 }
