@@ -98,6 +98,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/About" element={<About />} />
             <Route path="/Payment" element={<Payment />}/>
+            <Route path="/*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="/401" element={<Unauthorized/>}/>
           </Routes>

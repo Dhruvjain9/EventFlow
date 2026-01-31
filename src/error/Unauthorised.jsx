@@ -24,7 +24,7 @@ function Unauthorized() {
         </p>
 
         <p className="redirect-note">
-          Redirecting to login in <strong>7 seconds</strong>…
+          Redirecting to login in...
         </p>
 
         <button onClick={() => navigate("/login", { replace: true })}>
