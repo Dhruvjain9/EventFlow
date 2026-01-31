@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../stylesheets/login.css";
+import Loader from "../components/Loader";
 
 function Login() {
   const location = useLocation();
@@ -124,6 +125,8 @@ function Login() {
   };
 
   return (
+    <>
+    {loading && <Loader text={mode === "signin" ? "Signing in..." : "Creating account..."} />}
     <main className="auth-page">
       <div className="auth-card">
         {/* LEFT SIDE */}
@@ -277,6 +280,7 @@ function Login() {
         </div>
       </div>
     </main>
+    </>
   );
 }
 

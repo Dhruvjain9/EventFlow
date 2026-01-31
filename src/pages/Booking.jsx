@@ -5,155 +5,136 @@ import "../stylesheets/booking.css";
 function Booking() {
   const navigate = useNavigate();
   const location = useLocation();
-  const selectedEvent = location.state?.event;
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [agree, setAgree] = useState(false);
-  const [tickets, setTickets] = useState(1);
+  const event = location.state?.event;
   const user = JSON.parse(localStorage.getItem("user"));
 
+  const [tickets, setTickets] = useState(1);
 
-  if (!selectedEvent) {
+  if (!event || !user) {
     return <Navigate to="/*" replace />;
   }
 
-  const sendData = async (e) => {
-    e.preventDefault();
+  const totalPrice = tickets * event.ticketPrice;
 
-    if (!agree) {
-      alert("Please agree to terms and conditions");
-      return;
-    }
-
-    const bookingId = crypto.randomUUID();
-    const transactionId = `TXN-${Date.now()}`;
-
-    const payload = {
-      booking_id: bookingId,
-      user_id: user.id,
-      event_id: selectedEvent.eventId,
-      email,
-      tickets,
-      transaction_id: transactionId
-    };
-
-    try {
-      const res = await fetch(
-        "https://eventflow-backend-production-6fc4.up.railway.app/submitBooking.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-
-      navigate("/BookingSuccess", {
-        state: {
-          bookingId: data.booking_id,
-          event: selectedEvent,
-        },
-      });
-    } catch (err) {
-      console.error(err);
-      alert("Booking failed");
-    }
+  const proceedToPayment = () => {
+    navigate("/payment", {
+      state: {
+        event,
+        user,
+        tickets,
+        totalPrice,
+      },
+    });
   };
 
   return (
     <main className="booking-page">
-      <div className="booking-card">
-        {/* LEFT: EVENT SUMMARY */}
-        <div className="booking-summary">
-          <h2>Event Details</h2>
+      {/* HERO HEADER (LIKE EVENTS) */}
+      <section className="booking-hero">
+        <h1>Checkout</h1>
+        <p>Review your booking and complete payment</p>
+      </section>
 
-          <div className="summary-item">
-            <span>Venue</span>
-            <strong>{selectedEvent.VENUE}</strong>
+      {/* MAIN CONTENT */}
+      <section className="booking-content">
+        {/* LEFT CONTAINER */}
+        <div className="booking-left">
+          {/* EVENT DETAILS */}
+          <div className="card">
+            <h2>Event Details</h2>
+
+            <div className="event-detail-row">
+              <span>Location</span>
+              <strong>{event.venue}</strong>
+            </div>
+
+            <div className="event-detail-row">
+              <span>Date</span>
+              <strong>{event.date}</strong>
+            </div>
+
+            <div className="event-detail-row">
+              <span>Price per ticket</span>
+              <strong>${event.ticketPrice}</strong>
+            </div>
           </div>
 
-          <div className="summary-item">
-            <span>Date</span>
-            <strong>{selectedEvent.DATE}</strong>
+          {/* TICKETS */}
+          <div className="card">
+            <h2>Tickets</h2>
+
+            <div className="ticket-stepper">
+              <button
+                onClick={() => setTickets((t) => Math.max(1, t - 1))}
+                disabled={tickets === 1}
+              >
+                −
+              </button>
+
+              <span>{tickets}</span>
+
+              <button
+                onClick={() => setTickets((t) => Math.min(10, t + 1))}
+                disabled={tickets === 10}
+              >
+                +
+              </button>
+            </div>
           </div>
 
-          <div className="summary-item">
-            <span>Ticket Price</span>
-            <strong>${selectedEvent.TICKET_PRICE}</strong>
+          {/* USER DETAILS */}
+          <div className="card">
+            <h2>Your Details</h2>
+
+            <div className="event-detail-row">
+              <span>Name</span>
+              <strong>{user.name}</strong>
+            </div>
+
+            <div className="event-detail-row">
+              <span>Email</span>
+              <strong>{user.email}</strong>
+            </div>
+
+            <div className="event-detail-row">
+              <span>Age</span>
+              <strong>{user.age}</strong>
+            </div>
           </div>
-
-          <div className="stepper">
-            <button
-              type="button"
-              onClick={() => setTickets((prev) => Math.max(1, prev - 1))}
-              disabled = {tickets === 1}
-            >
-              −
-            </button>
-
-            <input
-              type="number"
-              value={tickets}
-              readOnly
-            />
-
-            <button
-              type="button"
-              onClick={() => setTickets((prev) => Math.min(10, prev + 1))}
-              disabled = {tickets === 10}
-            >
-              +
-            </button>
-          </div>
-
         </div>
 
-        {/* RIGHT: FORM */}
-        <div className="booking-form-wrapper">
-          <h1>Confirm Your Booking</h1>
+        {/* RIGHT CONTAINER – RECEIPT */}
+        <aside className="booking-right">
+          <div className="receipt">
+            <h2>Summary</h2>
 
-          <form onSubmit={sendData}>
-            <label>
-              Full Name
-              <input
-                type="text"
-                placeholder="Your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </label>
+            <div className="receipt-row">
+              <span>
+                {tickets} × Ticket
+              </span>
+              <span>${event.ticketPrice}</span>
+            </div>
 
-            <label>
-              Email Address
-              <input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </label>
+            <div className="receipt-divider" />
 
-            <label className="checkbox">
-              <input
-                type="checkbox"
-                checked={agree}
-                onChange={(e) => setAgree(e.target.checked)}
-              />
-              I agree to the terms and conditions
-            </label>
+            <div className="receipt-total">
+              <span>Total</span>
+              <strong>${totalPrice}</strong>
+            </div>
 
-            <button type="submit">Confirm Booking</button>
-          </form>
-        </div>
-      </div>
+            <button className="checkout-btn" onClick={proceedToPayment}>
+              Proceed to Checkout
+            </button>
+
+            <p className="secure-text">
+              🔒 Secure checkout · No payment details stored
+            </p>
+          </div>
+        </aside>
+      </section>
     </main>
   );
 }
 
 export default Booking;
-

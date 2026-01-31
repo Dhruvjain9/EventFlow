@@ -154,6 +154,11 @@ nav {
   opacity: 0.9;
 }
 
+.logout-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 
 /* ===============================
    HERO CAROUSEL (Home.jsx)
