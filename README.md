@@ -1,4 +1,4 @@
-# 🎟️ EventFlow
+# 🎟️ EventFlow (v1.3.1-beta)
 
 EventFlow is a full-stack event discovery and booking platform designed to simulate a real-world event booking experience. Users can browse events, apply filters, authenticate, review bookings, complete a payment step, and receive booking confirmations. The project focuses on **clean user flows, protected navigation, and production-oriented architecture**.
 
@@ -47,7 +47,7 @@ All ongoing development happens in the **beta branch**, while release candidates
 
 ---
 
-### 🛡️ Route Protection
+### 🎟️ Booking System (Refined)
 
 * Protected routes for sensitive flows:
 
@@ -171,11 +171,11 @@ The full application stack is deployed and integrated.
 
 ---
 
-## ⚠️ Known Limitations
+## ⚠️ Known Limitations (Beta)
 
 * Payment processing is currently mock / non-transactional
 * No user dashboard or booking history page yet
-* Error pages (401 / 403 / 408 / 500) are planned but not fully finalized
+* Error pages (403 / 408 / 500) are planned but not fully finalized
 * Mobile responsiveness improvements are deferred
 
 ---

@@ -12,7 +12,7 @@ function Booking() {
   const [tickets, setTickets] = useState(1);
 
   if (!event || !user) {
-    return <Navigate to="/*" replace />;
+    return <Navigate to="/404" replace />;
   }
 
   const totalPrice = tickets * event.ticketPrice;

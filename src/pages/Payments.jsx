@@ -14,7 +14,7 @@ function Payment() {
   const [loading, setLoading] = useState(false);
 
   if (!event || !user || !tickets) {
-    return <Navigate to="/*" replace />;
+    return <Navigate to="/401" replace />;
   }
 
   const total = tickets * event.ticketPrice;

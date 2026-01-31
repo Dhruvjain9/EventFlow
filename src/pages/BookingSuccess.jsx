@@ -13,7 +13,7 @@ function BookingSuccess() {
 
   // 🎉 Confetti ONLY when coming from checkout
   useEffect(() => {
-    if (!bookingId) return <Navigate to="/*" replace />;
+    if (!bookingId) return <Navigate to="/404" replace />;
 
     confetti({
       particleCount: 500,
