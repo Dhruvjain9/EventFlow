@@ -1,4 +1,4 @@
-import "../components/loader.css";
+import "./css/loader.css";
 
 function Loader({ text = "Loading..." }) {
   return (
