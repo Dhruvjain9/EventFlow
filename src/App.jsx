@@ -20,7 +20,7 @@ import NotFound from "./error/NotFound";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const isPaymentPage = location.pathname === "/Payment";
+  const isPaymentPage = location.pathname === "/payment";
   const user = JSON.parse(localStorage.getItem("user"));
 
 
