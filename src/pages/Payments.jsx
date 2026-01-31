@@ -16,7 +16,7 @@ function Payment() {
     return <Navigate to="/*" replace />;
   }
 
-  const total = tickets * event.TICKET_PRICE;
+  const total = tickets * event.ticketPrice;
   const tax = Math.round(total * 0.1);
   const grandTotal = total + tax;
 
@@ -33,7 +33,7 @@ function Payment() {
     const payload = {
       booking_id: `EVT-${Date.now()}`,
       user_id: user.id,
-      event_id: event.event_id,
+      event_id: event.eventId,
       tickets,
       email: user.email,
       transaction_id: transactionId,
@@ -155,7 +155,7 @@ function Payment() {
           <h2>Receipt</h2>
 
           <div className="summary-row">
-            <span>{event.VENUE}</span>
+            <span>{event.venue}</span>
           </div>
 
           <div className="summary-row">
