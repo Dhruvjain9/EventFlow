@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/unauthorized.css";
+import "./css/unauthorised.css";
 
 function Unauthorized() {
   const navigate = useNavigate();
