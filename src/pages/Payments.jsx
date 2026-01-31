@@ -64,6 +64,9 @@ function Payment() {
   };
 
   return (
+    <>
+    {loading && <Loader text="Processing payment..." />}
+
     <main className="payment-page">
       {/* HERO */}
       <header className="payment-hero">
@@ -181,6 +184,7 @@ function Payment() {
         </section>
       </div>
     </main>
+    </>
   );
 }
 

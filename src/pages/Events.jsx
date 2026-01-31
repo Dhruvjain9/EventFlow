@@ -88,6 +88,8 @@ function Events() {
   }, [cities, date, minPrice, maxPrice]);
 
   return (
+    <>
+    {loading && <Loader text="Processing payment..." />}
     <main>
     {/* HERO SLIDESHOW */}
       <section className="events-hero">
@@ -212,6 +214,7 @@ function Events() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 
