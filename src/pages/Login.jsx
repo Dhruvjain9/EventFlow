@@ -245,6 +245,12 @@ function Login() {
                       </button>
 
                       <button type="submit">Create Account</button>
+                      <p className="secure-text">
+                        <span class="material-symbols-outlined">
+                          warning
+                        </span>
+                        This is a demo website for learning and testing purposes only.
+                      </p>
                     </div>
                   </div>
                 </div>

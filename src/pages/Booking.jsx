@@ -130,6 +130,12 @@ function Booking() {
             <p className="secure-text">
               🔒 Secure checkout · No payment details stored
             </p>
+            <p className="secure-text">
+              <span class="material-symbols-outlined">
+                warning
+              </span>
+              This is a demo website for learning and testing purposes only.
+            </p>
           </div>
         </aside>
       </section>

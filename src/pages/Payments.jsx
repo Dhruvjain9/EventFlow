@@ -182,6 +182,12 @@ function Payment() {
           <p className="secure-note">
             🔒 Secure payment · Transaction verified
           </p>
+            <p className="secure-note">
+              <span class="material-symbols-outlined">
+                warning
+              </span>
+              This is a demo website for learning and testing purposes only.
+            </p>
         </section>
       </div>
     </main>
