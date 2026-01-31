@@ -62,7 +62,7 @@ function Login() {
         : { name, email, password, age, country };
 
     try {
-      const res = await fetch("http://localhost/api/auth.php", {
+      const res = await fetch("https://eventflow-backend-production-6fc4.up.railway.app/auth.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

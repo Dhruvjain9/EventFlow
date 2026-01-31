@@ -41,7 +41,7 @@ function Payment() {
     };
 
     try {
-      const res = await fetch("http://localhost/api/submitBooking.php", {
+      const res = await fetch("https://eventflow-backend-production-6fc4.up.railway.app/submitBooking.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
