@@ -4,7 +4,7 @@ import "../stylesheets/login.css";
 
 function Login() {
   const location = useLocation();
-  const [mode, setMode] = useState(location.state); // "signin" | "signup"
+  const [mode, setMode] = useState(location.state || "signin");
   const navigate = useNavigate();
 
 
@@ -20,6 +20,29 @@ function Login() {
   // UI state
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+          );
+          const data = await res.json();
+          if (data?.address?.country) {
+            setCountry(data.address.country);
+          }
+        } catch {
+          console.log("Could not get location!");
+        }
+      },
+      () => {
+        console.log("Location permission denied");
+      }
+    );
+  }, []);
+
 
   useEffect(() => {
     setStep(1);
@@ -59,7 +82,13 @@ function Login() {
     const payload =
       mode === "signin"
         ? { email, password }
-        : { name, email, password, age, country };
+        : {
+            name,
+            email,
+            password,
+            Age: Number(age),
+            Location: country,
+          };
 
     try {
       const res = await fetch("https://eventflow-backend-production-6fc4.up.railway.app/auth.php", {
@@ -76,7 +105,9 @@ function Login() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || "Authentication failed");
+        throw new Error(
+          data?.error || "Authentication failed. Please try again."
+        );
       }
 
       // Store auth data
