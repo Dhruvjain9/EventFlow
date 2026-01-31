@@ -45,6 +45,7 @@ function App() {
           <div className="nav-links">
             <Link to="/">Home</Link>
             <Link to="/Events">Events</Link>
+            <Link to="/About">About</Link>
 
             {!isLoggedIn ? (
               <>

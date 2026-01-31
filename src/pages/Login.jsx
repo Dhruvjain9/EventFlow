@@ -50,30 +50,6 @@ function Login() {
   }, [mode]);
 
 
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
-
-        try {
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
-          );
-
-          const data = await res.json();
-
-          if (data?.address?.country) {
-            setCountry(data.address.country);
-          }
-        } catch (err) {
-          console.log("Could not get location!");
-        }
-      },
-      () => {
-        console.log("Location permission denied");
-      }
-    );
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -246,7 +222,6 @@ function Login() {
                     <label>Age</label>
                     <input
                       type="number"
-                      placeholder="Age"
                       value={age}
                       onChange={(e) => setAge(e.target.value)}
                       required
