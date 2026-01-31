@@ -89,7 +89,7 @@ function Events() {
 
   return (
     <>
-    {loading && <Loader text="Processing payment..." />}
+    {loading && <Loader text="Loading Events..." />}
     <main>
     {/* HERO SLIDESHOW */}
       <section className="events-hero">

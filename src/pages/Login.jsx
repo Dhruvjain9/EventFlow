@@ -125,7 +125,7 @@ function Login() {
 
   return (
     <>
-    {loading && <Loader text="Processing payment..." />}
+    {loading && <Loader text="Logging in..." />}
     <main className="auth-page">
       <div className="auth-card">
         {/* LEFT SIDE */}
