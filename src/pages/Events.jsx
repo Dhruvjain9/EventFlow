@@ -25,6 +25,7 @@ function Events() {
 
 
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // filters (match backend params)
   const [cities, setCities] = useState([]);
@@ -81,6 +82,8 @@ function Events() {
       } catch (err) {
         console.error(err);
         setEvents([]);
+      } finally {
+        setLoading(false);
       }
     };
 

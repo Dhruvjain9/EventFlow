@@ -126,7 +126,7 @@ function Login() {
 
   return (
     <>
-    {loading && <Loader text="Logging in..." />}
+    {loading && <Loader text={mode === "signin" ? "Signing in..." : "Creating account..."} />}
     <main className="auth-page">
       <div className="auth-card">
         {/* LEFT SIDE */}
