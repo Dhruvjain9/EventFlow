@@ -1,0 +1,153 @@
+.payment-page {
+  background: #FFF1D0;
+
+}
+
+.payment-hero {
+  position: static;
+  padding-top: 30px;
+  height: 300px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.payment-hero h1 {
+  font-size: 42px;
+  color: #DD1C1A;
+}
+
+.payment-hero p {
+  color: #DD1C1A;
+  opacity: 0.8;
+}
+
+.payment-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 32px;
+}
+
+/* LEFT */
+.payment-form {
+  background: #F0C808;
+  border: 2px solid #DD1C1A;
+  border-radius: 14px;
+  padding: 32px;
+}
+
+.payment-form h2 {
+  color: #DD1C1A;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.payment-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.payment-tabs button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #DD1C1A;
+  background: transparent;
+  color: #DD1C1A;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.payment-tabs button.active {
+  background: #DD1C1A;
+  color: #FFF1D0;
+}
+
+.material-symbols-outlined{
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.payment-form label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #DD1C1A;
+}
+
+.payment-form input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #DD1C1A;
+  background: #FFF1D0;
+}
+
+.payment-form .row {
+  display: flex;
+  gap: 12px;
+}
+
+.payment-form button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #DD1C1A;
+  color: #FFF1D0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* RIGHT */
+.payment-summary {
+  background: #FFF1D0;
+  border: 2px solid #DD1C1A;
+  border-radius: 14px;
+  padding: 32px;
+}
+
+.payment-summary h2 {
+  color: #DD1C1A;
+  margin-bottom: 20px;
+}
+
+.summary-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: #DD1C1A;
+}
+
+.divider {
+  height: 1px;
+  background: #DD1C1A;
+  margin: 16px 0;
+}
+
+.summary-total {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.secure-note {
+  color: #DD1C1A;
+  margin-top: 16px;
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .payment-container {
+    grid-template-columns: 1fr;
+  }
+}

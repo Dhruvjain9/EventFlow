@@ -1,13 +1,67 @@
-# 🎟️ EventFlow
+# 🎟️ EventFlow (v1.3.1-beta)
 
-EventFlow is a full-stack event discovery and booking platform that allows users to browse events, apply filters, authenticate, and securely book tickets. The project is built with a modern frontend architecture and a backend API designed to support real-world booking workflows.
+EventFlow is a full-stack event discovery and booking platform that allows users to browse events, apply filters, authenticate, and securely book tickets. This branch (`v1.3.1beta`) represents an **active development phase**, where core flows are being refined, bugs are fixed, and the booking experience is extended with a payment step.
 
 ---
 
-## 📌 Current Version
+## 📌 Branch & Versioning Strategy
 
-* **Version:** v1.3.1
-* **Status:** Active development (v1.x lifecycle)
+* **Active Development Branch:** `v1.3.1beta`
+* **Version Tag:** v1.3.1-beta
+* **Lifecycle Stage:** Ongoing development / beta
+
+All **feature development, refactors, and fixes will continue on this branch**.
+
+The **MVP snapshot** of the application will be created by branching off this work into **`v1.4.3rc` (release candidate)** once the booking and payment flow reaches functional completeness.
+
+In short:
+
+* `v1.3.1beta` → continuous development
+* `v1.4.3rc` → MVP freeze / stabilization
+
+---
+
+## ✨ What’s New in v1.3.1-beta
+
+### 🐞 Bug Fixes
+
+* Fixed inconsistencies in the booking flow navigation
+* Improved state handling across protected routes
+* Resolved edge cases related to direct URL access and refresh behavior
+
+---
+
+### 💳 Payment Flow (New)
+
+A **payment step has been introduced** between booking and booking confirmation.
+
+#### Updated Flow:
+
+```
+Events → Booking → Payment → BookingSuccess
+```
+
+* Booking page now focuses on **event review and ticket selection**
+* User details are no longer re-collected during booking
+* Payment page handles payment intent (mock / in-progress)
+* Booking success page is accessible **only after payment success**
+
+All routes involved in this flow are protected and guarded.
+
+---
+
+### 🛡️ Enhanced Route Protection
+
+* Protected routes now include:
+
+  * Booking
+  * Payment
+  * Booking success
+* Guards prevent:
+
+  * Manual URL access
+  * Skipping steps in the flow
+  * Accessing success pages without completing prior steps
 
 ---
 
@@ -29,8 +83,8 @@ EventFlow is a full-stack event discovery and booking platform that allows users
   * City (multi-select)
   * Date
   * Price range (min / max)
-* Responsive event cards with event details
-* Direct navigation to booking flow
+* Event cards with essential event details
+* Navigation into the booking flow
 
 ---
 
@@ -39,34 +93,25 @@ EventFlow is a full-stack event discovery and booking platform that allows users
 * User **Sign In** and **Sign Up** functionality
 * Token-based authentication
 * Persistent login using local storage
-* Authentication state available across the app
+* Authentication state shared across the application
 
 ---
 
-### 🛡️ Route Protection
+### 🎟️ Booking System (Refined)
 
-* Protected routes to prevent unauthorized access:
-
-  * Booking page
-  * Booking success page
-* Guards against:
-
-  * Manual URL access
-  * Page refresh abuse
-* Automatic redirection for unauthenticated users
+* Booking flow tied directly to selected events
+* Ticket quantity selection with limits
+* Booking linked to authenticated users
+* Backend booking submission with validation
 
 ---
 
-### 🎟️ Booking System
+### 💳 Payment Page
 
-* Secure booking flow tied to selected events
-* Ticket quantity selector with limits
-* Required user details validation
-* Backend booking submission with error handling
-* Reliable booking confirmation response including:
-
-  * Unique booking ID
-  * Event details
+* Dedicated payment step between booking and confirmation
+* Order summary displayed before payment
+* Flow designed to support real payment gateway integration
+* Payment success required to proceed
 
 ---
 
@@ -74,19 +119,18 @@ EventFlow is a full-stack event discovery and booking platform that allows users
 
 * Dedicated booking success page
 * Displays booking ID and event summary
-* Guarded against invalid or direct access
-* Navigation options to continue browsing
+* Guarded against refresh and direct access
 
 ---
 
 ### 🎨 UI / UX
 
-* Fully responsive layout across all pages
-* Consistent design language and styling
-* Dedicated layouts for:
+* Consistent design language across pages
+* Structured layouts for:
 
   * Authentication
   * Booking
+  * Payment
   * Booking success
 
 ---
@@ -103,7 +147,7 @@ EventFlow is a full-stack event discovery and booking platform that allows users
 
 * REST-style API
 * Authentication endpoints
-* Booking submission and event retrieval
+* Event retrieval and booking APIs
 
 ---
 
@@ -112,28 +156,32 @@ EventFlow is a full-stack event discovery and booking platform that allows users
 * `Home` – Landing page and feature highlights
 * `Events` – Event listing and filtering
 * `Login` – Authentication (sign in / sign up)
-* `Booking` – Ticket booking flow
+* `Booking` – Event review and ticket selection
+* `Payment` – Payment step (beta)
 * `BookingSuccess` – Booking confirmation
-* `About` - About the project and me
+* `About` – Project and author overview
 
 ---
 
 ## 🧪 Stability & Reliability
 
-* Route-level access control implemented
+* Strong route-level access control
+* Defensive UI guards for multi-step flows
 * Improved backend validation for booking requests
-* Defensive UI guards to prevent invalid navigation
 
 ---
 
-## ⚠️ Known Limitations
+## ⚠️ Known Limitations (Beta)
 
-* Bookings are not yet fully linked to authenticated users
-* No user dashboard or booking history page
+* Payment integration is currently mocked / in-progress
+* No user dashboard or booking history page yet
+* Error pages (401 / 403 / 408 / 500) are planned but not finalized
 * Backend authorization will continue to be hardened
 
 ---
 
 ## 📄 Summary
 
-EventFlow v1.3.0 represents a stable and feature-rich foundation for an event booking platform. Core user flows — discovery, authentication, protected booking, and confirmation — are fully implemented, providing a strong base for future expansion while maintaining architectural clarity and security.
+The **v1.3.1-beta** branch focuses on stabilizing and extending the booking experience by introducing a payment step and refining navigation and route protection. It represents an important transition from a basic booking flow to a more realistic, production-oriented architecture.
+
+All work on this branch is part of the beta development cycle and will culminate in a **v1.4.3 release candidate (rc)** once the payment and flow logic are finalized.

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-
+import Loader from "../components/Loader";
 import "../stylesheets/events.css";
 
 function Events() {
@@ -25,6 +25,7 @@ function Events() {
 
 
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // filters (match backend params)
   const [cities, setCities] = useState([]);
@@ -81,6 +82,8 @@ function Events() {
       } catch (err) {
         console.error(err);
         setEvents([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -88,6 +91,8 @@ function Events() {
   }, [cities, date, minPrice, maxPrice]);
 
   return (
+    <>
+    {loading && <Loader text="Loading Events..." />}
     <main>
     {/* HERO SLIDESHOW */}
       <section className="events-hero">
@@ -212,10 +217,12 @@ function Events() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 
 export default Events;
+
 
 
 

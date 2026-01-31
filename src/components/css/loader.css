@@ -1,0 +1,44 @@
+/* FULL SCREEN OVERLAY */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 241, 208, 0.95); /* matches your theme */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* LOADER BOX */
+.loader-box {
+  background: #F0C808;
+  border: 2px solid #DD1C1A;
+  border-radius: 14px;
+  padding: 32px 40px;
+  text-align: center;
+  color: #DD1C1A;
+  min-width: 220px;
+}
+
+/* SPINNER */
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(221, 28, 26, 0.3);
+  border-top: 4px solid #DD1C1A;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto 16px;
+}
+
+.loader-box p {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* ANIMATION */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

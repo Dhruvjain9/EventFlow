@@ -1,6 +1,5 @@
-import { Link, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 // Styles
 import "./App.css";
@@ -13,6 +12,7 @@ import BookingSuccess from "./pages/BookingSuccess";
 import Events from "./pages/Events";
 import Login from "./pages/Login";
 import About from "./pages/About";
+import Payment from "./pages/Payments";
 
 //support pages
 import NotFound from "./error/NotFound";
@@ -20,6 +20,7 @@ import NotFound from "./error/NotFound";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const isPaymentPage = location.pathname === "/payment";
   const user = JSON.parse(localStorage.getItem("user"));
 
 
@@ -62,7 +63,12 @@ function App() {
                   {/*<Link to="/profile">Edit Profile</Link>
                   <Link to="/my-bookings">My Bookings</Link>*/}
                   <button
+                    disabled={isPaymentPage}
+                    className={isPaymentPage ? "logout-disabled" : ""}
+                    title={isPaymentPage ? "Finish payment before logging out" : ""}
                     onClick={() => {
+                      if (isPaymentPage) return;
+
                       localStorage.removeItem("user");
                       localStorage.removeItem("auth_token");
                       setIsLoggedIn(false);
@@ -70,6 +76,7 @@ function App() {
                   >
                     Logout
                   </button>
+
                 </div>
               </div>
             )}
@@ -88,7 +95,8 @@ function App() {
             <Route path="/BookingSuccess" element={<BookingSuccess />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/About" element={<About/>} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Payment" element={<Payment />}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </section>
