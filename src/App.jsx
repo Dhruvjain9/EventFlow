@@ -16,6 +16,7 @@ import Payment from "./pages/Payments";
 
 //support pages
 import NotFound from "./error/NotFound";
+import Unauthorized from "./error/Unauthorised"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -97,7 +98,8 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/About" element={<About />} />
             <Route path="/Payment" element={<Payment />}/>
-            <Route path="/*" element={<NotFound />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="/401" element={<Unauthorized/>}/>
           </Routes>
         </section>
       </main>
