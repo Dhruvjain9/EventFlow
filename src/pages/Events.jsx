@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-
+import Loader from "../components/Loader";
 import "../stylesheets/events.css";
 
 function Events() {

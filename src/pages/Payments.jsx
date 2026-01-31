@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { use, useState } from "react";
 import "../stylesheets/payment.css";
+import Loader from "../components/Loader";
 
 function Payment() {
   const location = useLocation();

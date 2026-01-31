@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../stylesheets/login.css";
+import Loader from "../components/Loader";
 
 function Login() {
   const location = useLocation();
