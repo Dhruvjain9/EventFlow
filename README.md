@@ -1,117 +1,93 @@
 # 🎟️ EventFlow (v1.3.1-beta)
 
-EventFlow is a full-stack event discovery and booking platform that allows users to browse events, apply filters, authenticate, and securely book tickets. This branch (`v1.3.1beta`) represents an **active development phase**, where core flows are being refined, bugs are fixed, and the booking experience is extended with a payment step.
+EventFlow is a full-stack event discovery and booking platform designed to simulate a real-world event booking experience. Users can browse events, apply filters, authenticate, review bookings, complete a payment step, and receive booking confirmations. The project focuses on **clean user flows, protected navigation, and production-oriented architecture**.
 
 ---
 
-## 📌 Branch & Versioning Strategy
+## 📌 Project Status
 
+* **Current Stable Version:** v1.5.0
 * **Active Development Branch:** `v1.3.1beta`
-* **Version Tag:** v1.3.1-beta
-* **Lifecycle Stage:** Ongoing development / beta
+* **MVP Snapshot Branch:** `Deployment`
+* **Lifecycle:** Active development (v1.x)
 
-All **feature development, refactors, and fixes will continue on this branch**.
-
-The **MVP snapshot** of the application will be created by branching off this work into **`v1.4.3rc` (release candidate)** once the booking and payment flow reaches functional completeness.
-
-In short:
-
-* `v1.3.1beta` → continuous development
-* `v1.4.3rc` → MVP freeze / stabilization
+All ongoing development happens in the **beta branch**, while release candidates and stable snapshots are branched deliberately.
 
 ---
 
-## ✨ What’s New in v1.3.1-beta
-
-### 🐞 Bug Fixes
-
-* Fixed inconsistencies in the booking flow navigation
-* Improved state handling across protected routes
-* Resolved edge cases related to direct URL access and refresh behavior
-
----
-
-### 💳 Payment Flow (New)
-
-A **payment step has been introduced** between booking and booking confirmation.
-
-#### Updated Flow:
-
-```
-Events → Booking → Payment → BookingSuccess
-```
-
-* Booking page now focuses on **event review and ticket selection**
-* User details are no longer re-collected during booking
-* Payment page handles payment intent (mock / in-progress)
-* Booking success page is accessible **only after payment success**
-
-All routes involved in this flow are protected and guarded.
-
----
-
-### 🛡️ Enhanced Route Protection
-
-* Protected routes now include:
-
-  * Booking
-  * Payment
-  * Booking success
-* Guards prevent:
-
-  * Manual URL access
-  * Skipping steps in the flow
-  * Accessing success pages without completing prior steps
-
----
-
-## ✨ Features Implemented So Far
+## ✨ Core Features
 
 ### 🏠 Home Page
 
-* Hero carousel showcasing featured events
-* Highlights core platform features
-* Call-to-action to explore events
+* Hero section highlighting featured events
+* Overview of platform capabilities
+* Clear call-to-action to explore events
 
 ---
 
-### 📅 Events Listing
+### 📅 Events Discovery
 
-* Server-side event fetching
-* Advanced filtering options:
+* Server-backed event listing
+* Advanced filtering:
 
   * City (multi-select)
   * Date
   * Price range (min / max)
-* Event cards with essential event details
-* Navigation into the booking flow
+* Event cards displaying key information
+* Entry point into the booking flow
 
 ---
 
 ### 🔐 Authentication
 
-* User **Sign In** and **Sign Up** functionality
+* User Sign In and Sign Up flows
 * Token-based authentication
 * Persistent login using local storage
-* Authentication state shared across the application
+* Authentication state shared across the app
 
 ---
 
 ### 🎟️ Booking System (Refined)
 
-* Booking flow tied directly to selected events
+* Protected routes for sensitive flows:
+
+  * Booking
+  * Payment
+  * Booking success
+* Guards against:
+
+  * Manual URL access
+  * Skipping steps in multi-page flows
+  * Invalid refresh behavior
+
+---
+
+### 🎟️ Booking Flow
+
+The booking experience is structured as a **multi-step, protected flow**:
+
+```
+Events → Booking → Payment → Booking Success
+```
+
+#### Booking Page
+
+* Displays selected event details
 * Ticket quantity selection with limits
-* Booking linked to authenticated users
-* Backend booking submission with validation
+* No duplicate user detail collection
 
 ---
 
 ### 💳 Payment Page
 
 * Dedicated payment step between booking and confirmation
-* Order summary displayed before payment
-* Flow designed to support real payment gateway integration
-* Payment success required to proceed
+* Displays:
+
+  * Event summary
+  * Ticket count
+  * Total payable amount
+* Designed to support real payment gateway integration
+* Success required to proceed
 
 ---
 
@@ -119,19 +95,27 @@ All routes involved in this flow are protected and guarded.
 
 * Dedicated booking success page
 * Displays booking ID and event summary
-* Guarded against refresh and direct access
+* Guarded against direct access and refresh abuse
 
 ---
 
-### 🎨 UI / UX
+### ⏳ Loader Overlay
 
-* Consistent design language across pages
-* Structured layouts for:
+* Global loader overlay for asynchronous actions
+* Activated during:
 
-  * Authentication
-  * Booking
-  * Payment
-  * Booking success
+  * API requests
+  * Booking submission
+  * Payment processing
+* Prevents duplicate actions and improves user feedback
+
+---
+
+### 🚪 Logout Flow
+
+* Dedicated logout route
+* Clears authentication state and session data
+* Prevents silent redirects and unauthorized reuse
 
 ---
 
@@ -149,39 +133,63 @@ All routes involved in this flow are protected and guarded.
 * Authentication endpoints
 * Event retrieval and booking APIs
 
+### Database
+
+* MongoDB (document-based data modeling)
+
+---
+
+## 🌐 Deployment
+
+* **Frontend:** Vercel
+* **Backend:** Railway
+* **Database:** MongoDB
+
+The full application stack is deployed and integrated.
+
 ---
 
 ## 🧱 Project Structure (High Level)
 
-* `Home` – Landing page and feature highlights
-* `Events` – Event listing and filtering
-* `Login` – Authentication (sign in / sign up)
+* `Home` – Landing page and feature overview
+* `Events` – Event discovery and filtering
+* `Login` – Authentication flows
 * `Booking` – Event review and ticket selection
-* `Payment` – Payment step (beta)
-* `BookingSuccess` – Booking confirmation
-* `About` – Project and author overview
+* `Payment` – Payment step
+* `BookingSuccess` – Confirmation view
+* `Logout` – Session termination
+* `About` – Project and author information
 
 ---
 
 ## 🧪 Stability & Reliability
 
 * Strong route-level access control
-* Defensive UI guards for multi-step flows
-* Improved backend validation for booking requests
+* Defensive UI guards for multi-step navigation
+* Backend validation for booking and payment-related requests
+* Improved handling of async state transitions
 
 ---
 
 ## ⚠️ Known Limitations (Beta)
 
-* Payment integration is currently mocked / in-progress
+* Payment processing is currently mock / non-transactional
 * No user dashboard or booking history page yet
-* Error pages (401 / 403 / 408 / 500) are planned but not finalized
-* Backend authorization will continue to be hardened
+* Error pages (403 / 408 / 500) are planned but not fully finalized
+* Mobile responsiveness improvements are deferred
+
+---
+
+## 🗺️ Roadmap (High Level)
+
+* User dashboard with booking history
+* Finalized error handling pages
+* Real payment gateway integration
+* Mobile-first responsiveness
+* Admin-side event management
 
 ---
 
 ## 📄 Summary
 
-The **v1.3.1-beta** branch focuses on stabilizing and extending the booking experience by introducing a payment step and refining navigation and route protection. It represents an important transition from a basic booking flow to a more realistic, production-oriented architecture.
-
-All work on this branch is part of the beta development cycle and will culminate in a **v1.4.3 release candidate (rc)** once the payment and flow logic are finalized.
+EventFlow v1.5.0 represents a feature-complete MVP foundation with authentication, protected booking flows, a payment step, and a fully deployed backend infrastructure. The project prioritizes correctness, flow integrity, and real-world architectural patterns, serving as a strong base for future iteration and expansion.
