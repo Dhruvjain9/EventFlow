@@ -36,17 +36,17 @@ function BookingSuccess() {
 
             <div className="detail-row">
               <span>Venue</span>
-              {event.VENUE}
+              {event.venue}
             </div>
 
             <div className="detail-row">
               <span>Date</span>
-              {event.DATE}
+              {event.date}
             </div>
 
             <div className="detail-row">
               <span>Price</span>
-              ${event.TICKET_PRICE}
+              ${event.ticketPrice}
             </div>
           </div>
         )}
