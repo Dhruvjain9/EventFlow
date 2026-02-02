@@ -83,7 +83,6 @@
 
 /* ===============================
    MOBILE – ABOUT PAGE
-================================ */
 
 @media (max-width: 600px) {
 
@@ -144,50 +143,5 @@
 
 /* ===============================
    TABLET – ABOUT PAGE
-================================ */
-
-@media (max-width: 1024px) {
-
-  /* HERO */
-
-  .about-hero {
-    padding: 6rem 6vw 4rem;
-  }
-
-  .about-hero h1 {
-    font-size: clamp(2.6rem, 5vw, 3.6rem);
-  }
-
-  .about-hero p {
-    font-size: 1rem;
-  }
-
-  /* TEXT BLOCKS */
-
-  .about-block {
-    padding: 3.5rem 6vw;
-  }
-
-  .about-block p {
-    font-size: 0.95rem;
-  }
-
-  /* ABOUT ME */
-
-  .about-me {
-    padding: 5rem 6vw;
-    gap: 3rem;
-  }
-
-  .about-me-image img {
-    max-width: 360px;
-  }
-
-  .about-me-content h2 {
-    font-size: 1.8rem;
-  }
-
-  .about-me-content p {
-    font-size: 0.95rem;
   }
 }

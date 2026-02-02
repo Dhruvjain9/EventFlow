@@ -42,7 +42,11 @@ A major upgrade focused on visual polish, responsiveness, animations, and user f
 - Confetti celebration on successful bookings 🎉
 - Animated full-screen loaders during async operations
 
----
+### 🎬 Smooth Animations
+- GSAP-powered page transitions
+- Micro-interactions on buttons, tabs, and cards
+- Animated totals during checkout
+- Confetti celebration on successful booking 🎉
 
 ### 🛒 Booking Flow
 - Route-protected booking page
@@ -156,7 +160,7 @@ A major upgrade focused on visual polish, responsiveness, animations, and user f
 ---
 
 ## 📂 Project Structure
-```txt
+```
 src/
 ├── components/
 │ ├── navbar
@@ -188,7 +192,7 @@ src/
 │ └── layout.css
 │
 └── App.jsx
-
+```
 ---
 
 ## 🧠 Architectural Highlights
