@@ -1,55 +1,126 @@
 # 🎟️ EventFlow
 
-**EventFlow** is a modern event discovery and booking platform built to simulate how real-world web applications are designed, structured, and scaled.  
-It focuses on **clean UX**, **smooth animations**, and **practical full-stack workflows** — from browsing events to completing secure payments.
+**EventFlow** is a modern, full-stack event discovery and booking platform designed to mirror how real-world web products are built, styled, and scaled.
 
-> This project is not a demo or clone. It is a hands-on exploration of building a production-grade web experience.
+The project emphasizes **clean UX**, **thoughtful motion**, and **practical engineering decisions**, covering the complete user journey — from discovering events to confirming bookings through a secure checkout flow.
+
+> EventFlow is not a demo or tutorial clone.  
+> It is a hands-on exploration of building a production-grade web application.
 
 ---
 
 ## 🚀 Current Version
 
-**v2.0.0** — Major UI & Experience Upgrade  
-See full details in [`RELEASE_NOTES.md`](./RELEASE_NOTES.md)
+**v2.0.0** — UI, UX, and Interaction Overhaul  
+A major upgrade focused on visual polish, responsiveness, animations, and user flow stability.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
 ### 🧭 Event Discovery
-- Browse curated events
-- Filter by city, date, and price range
-- Clean card-based layout with hover interactions
+- Browse curated events fetched from backend APIs
+- Server-side filtering by:
+  - City
+  - Date
+  - Price range
+- URL-synced filters (reload & share safe)
+- Responsive event grid with animated cards
+- Graceful empty-state handling
 
-### 🎬 Smooth Animations
-- GSAP-powered page transitions
-- Micro-interactions on buttons, tabs, and cards
-- Animated totals during checkout
-- Confetti celebration on successful booking 🎉
+---
 
-### 🛒 Booking & Checkout
-- Ticket quantity controls
-- Receipt-style order summary
-- Secure checkout flow
-- Route-protected booking pages
+### 🎬 Animations & Motion
+- GSAP-powered page entry animations
+- Smooth scrolling using **GSAP ScrollSmoother**
+- Micro-interactions on:
+  - Buttons
+  - Tabs
+  - Cards
+  - Totals and counters
+- Hover-based depth and elevation effects
+- Confetti celebration on successful bookings 🎉
+- Animated full-screen loaders during async operations
+
+---
+
+### 🛒 Booking Flow
+- Route-protected booking page
+- Ticket quantity stepper with limits
+- Live total price calculation
+- Sticky receipt panel on desktop
+- Mobile-friendly stacked layout
+- Auto-filled user details from session
+
+---
 
 ### 💳 Payments
-- Card and UPI payment options
-- Transaction verification
-- Full-screen loader during processing
-- Clear success and error handling
+- Dedicated checkout page
+- Card & UPI payment method toggle
+- Transaction ID validation
+- Tax calculation & grand total breakdown
+- Full-screen loader during payment processing
+- Backend booking submission
+- Automatic redirect to confirmation page
+
+---
+
+### ✅ Booking Confirmation
+- Success page with:
+  - Confetti animation
+  - Booking ID highlight
+  - Event summary
+- Prevents direct access without valid checkout flow
+- Clear next actions (Browse Events / Go Home)
+
+---
 
 ### 👤 Authentication
-- Sign In / Sign Up flow
-- Two-step signup process
-- Session persistence using localStorage
-- Protected routes for bookings and payments
+- Sign In / Sign Up system
+- Two-step signup flow
+- Age & country capture
+- Browser geolocation enrichment
+- Session persistence using `localStorage`
+- Logout protection during critical flows (e.g. payment)
 
-### 🧭 Navigation
-- Fixed, glass-style navbar with scroll blur
+---
+
+### 🔐 Route Protection & Error Handling
+- Protected routes for:
+  - Booking
+  - Payment
+- Custom error pages:
+  - **401 Unauthorized** (auto-redirect to login)
+  - **404 Not Found**
+- Graceful handling of invalid navigation states
+
+---
+
+### 🧭 Navigation & Layout
+- Fixed glass-style navbar
+- Scroll-aware blur & shadow effects
+- Hover-stable profile dropdown (no flicker)
 - Route-aware navbar visibility
-- Profile dropdown with smooth hover behavior
-- Mobile-friendly navigation
+- Structured footer with responsive layout
+- Consistent spacing and typography across pages
+
+---
+
+### ⏳ Loading & Feedback
+- Full-screen loader overlay
+- Context-aware loading messages
+- Disabled actions during async requests
+- Clear success and error feedback
+
+---
+
+### 📱 Responsive Design
+- Desktop-first polished layouts
+- Tablet-optimized grids and spacing
+- Mobile-friendly:
+  - Stacked layouts
+  - Touch-safe controls
+  - Simplified interactions
 
 ---
 
@@ -59,17 +130,19 @@ See full details in [`RELEASE_NOTES.md`](./RELEASE_NOTES.md)
 - Soft shadows instead of hard borders
 - Clear visual hierarchy
 - Motion used to guide attention — not distract
-- Mobile-first responsiveness
+- Consistent component spacing and rhythm
+- UI designed to feel calm, confident, and intentional
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Frontend
-- **React**
-- **React Router**
-- **GSAP** (animations & ScrollSmoother)
-- **CSS3** (custom design system)
+- **React** (functional components & hooks)
+- **React Router DOM** (routing & protection)
+- **GSAP** (animations & smooth scrolling)
+- **CSS3** (custom responsive design system)
+- **Material Symbols** (icons)
 
 ### Backend
 - **PHP REST APIs**
@@ -78,41 +151,80 @@ See full details in [`RELEASE_NOTES.md`](./RELEASE_NOTES.md)
 
 ### Utilities
 - `canvas-confetti` for success feedback
-- Browser Geolocation API (signup enrichment)
+- Browser Geolocation API
 
 ---
 
 ## 📂 Project Structure
-
 ```txt
 src/
 ├── components/
-│   ├── navbar
-│   ├── footer
-│   ├── loader
-│   ├── cursortrail
+│ ├── navbar
+│ ├── footer
+│ ├── loader
+│ ├── cursortrail
 │
 ├── pages/
-│   ├── Home
-│   ├── Events
-│   ├── Booking
-│   ├── Payments
-│   ├── BookingSuccess
-│   ├── Login
-│   ├── About
+│ ├── Home
+│ ├── Events
+│ ├── Booking
+│ ├── Payments
+│ ├── BookingSuccess
+│ ├── Login
+│ ├── About
 │
 ├── error/
-│   ├── NotFound
-│   └── Unauthorized
+│ ├── NotFound
+│ └── Unauthorized
 │
 ├── stylesheets/
-│   ├── home.css
-│   ├── events.css
-│   ├── booking.css
-│   ├── bookingsuccess.css
-│   ├── login.css
-│   ├── about.css
-│   ├── payment.css
-│   └── layout.css
+│ ├── home.css
+│ ├── events.css
+│ ├── booking.css
+│ ├── payment.css
+│ ├── bookingsuccess.css
+│ ├── login.css
+│ ├── about.css
+│ └── layout.css
 │
 └── App.jsx
+
+---
+
+## 🧠 Architectural Highlights
+
+- Clean separation of components, pages, and styles
+- Intentional state passing via routes
+- No unnecessary global state
+- Animations scoped to lifecycle events
+- Backend-driven data (no hardcoded mocks)
+- UX decisions aligned with real product behavior
+
+---
+
+## 🎓 Academic Context
+
+EventFlow was developed as part of a **Computer Science (AI & ML)** undergraduate program.
+
+The project demonstrates:
+- Real-world web application architecture
+- Client-server interaction
+- UX-driven frontend engineering
+- Production-style routing, state handling, and feedback
+
+---
+
+## 🔮 Future Enhancements
+
+- User dashboards
+- Booking history
+- Event recommendations
+- Real payment gateway integration
+- Performance optimizations
+- Accessibility improvements
+
+---
+
+## 📄 License
+
+This project is intended for **educational and demonstration purposes**.
