@@ -1,37 +1,39 @@
 /* ===============================
-   HERO
+   EVENTS HERO
 ================================ */
 
 .events-hero {
-  max-width: 1000px;
-  margin: 0 auto 90px;
+  padding: 7rem 8vw 5rem;
+  background: linear-gradient(180deg, #ffffff, #f6f6f6);
   text-align: center;
-  color: #DD1C1A;
 }
 
 .events-hero h1 {
-  font-size: 56px;
-  font-weight: 700;
-  margin-bottom: 18px;
+  color: #000;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
 }
 
 .events-hero p {
-  font-size: 18px;
   max-width: 720px;
   margin: 0 auto;
+  font-size: 1.05rem;
+  color: #444;
   line-height: 1.7;
-  opacity: 0.9;
 }
 
 /* ===============================
-   EVENTS – LAYOUT
+   EVENTS LAYOUT
 ================================ */
 
 .events-layout {
-    margin: 60px;
-    padding: 0 20px;
-    display: flex;
-    gap: 24px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  padding: 4rem 8vw 6rem;
+  background: #ffffff;
 }
 
 /* ===============================
@@ -39,137 +41,113 @@
 ================================ */
 
 .filter-pane {
-  width: 280px;
-  background: #F0C808;
-  border: solid #DD1C1A;
-  border-radius: 12px;
-  padding: 24px;
   position: sticky;
-  top: 100px;
+  top: 110px;
+  height: fit-content;
+  padding: 2rem;
+  border-radius: 22px;
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
+  color: #000;
 }
 
-/* Title */
 .filter-pane h3 {
-  color: #DD1C1A;
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #eee;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
 }
 
-/* ===============================
-   FILTER GROUP
-================================ */
+/* filter sections */
 
 .filter-group {
-  justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .filter-title {
-  color: #DD1C1A;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
 }
+
+/* checkboxes */
 
 .checkbox-item {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 0.7rem;
   font-size: 0.95rem;
-  color: #DD1C1A;
+  margin-bottom: 0.6rem;
   cursor: pointer;
 }
 
-/* Make checkbox visually consistent */
-.checkbox-item input[type="checkbox"] {
-  margin-right: 15px;
+.checkbox-item input {
+  appearance: none;
   width: 16px;
   height: 16px;
-  flex-shrink: 0;
-  accent-color: #DD1C1A;
+  border-radius: 4px;
+  border: 1.5px solid #000;
+  cursor: pointer;
 }
 
+.checkbox-item input:checked {
+  background: #000;
+}
 
-/* Inputs ( Date, Numbers) */
+/* inputs */
+
 .filter-pane input[type="date"],
 .filter-pane input[type="number"] {
   width: 100%;
-  padding: 12px 14px;
+  padding: 0.45rem 0.6rem;
   border-radius: 8px;
-  border: 1px solid #dcdcdc;
+  border: 1px solid rgba(0,0,0,0.2);
   font-size: 0.9rem;
-  margin-bottom: 14px;
-  background: #fafafa;
 }
 
-.filter-pane input::placeholder {
-  color: #999;
-}
-
-/* ===============================
-   PRICE RANGE
-================================ */
-
-.filter-pane label {
-  color: #DD1C1A;
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: block;
-  margin: 20px 0 10px;
-}
-
-/* Slider */
 .filter-pane input[type="range"] {
   width: 100%;
-  margin-bottom: 14px;
-  accent-color: #DD1C1A;
+  margin-top: 0.6rem;
+  accent-color: #000;
 }
 
-/* Min / Max inputs */
+/* price inputs */
+
 .price-inputs {
   display: flex;
-  gap: 10px;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
 }
 
-.price-inputs input {
-  flex: 1;
-}
-
-/* ===============================
-   CLEAR FILTERS BUTTON
-================================ */
+/* clear filters button */
 
 .filter-pane button {
+  margin-top: 1.8rem;
   width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  background: #DD1C1A;
-  color: #FFF1D0;
-  border: none;
-  border-radius: 8px;
+  padding: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #000;
+  background: #000;
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .filter-pane button:hover {
-  opacity: 0.9;
+  background: #fff;
+  color: #000;
 }
 
-
 /* ===============================
-   EVENTS LIST
+   EVENTS GRID
 ================================ */
 
 .events-pane {
-    flex: 1;
-}
-
-.events-pane h3 {
-    margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.2rem;
 }
 
 /* ===============================
@@ -177,158 +155,77 @@
 ================================ */
 
 .event-card {
-    background: #F0C808;
-    border: solid #DD1C1A;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-}
-
-.event-details{
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.event-card h4 {
-    color: #DD1C1A;
-    font-size: 20px;
-    font-weight: 600px;
-    margin: 0 0 8px 0;
+.event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.12);
 }
 
-.event-card p {
-    font-size: 14px;
-    margin: 4px 0;
-    color: #DD1C1A;
-}
-
-.event-card a {
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 999px;
-    background-color: #DD1C1A;
-    border: solid #FFF1D0;
-    margin: 24px;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: 600;
-    color: #FFF1D0;
-  transition: transform 0.2s ease;
-
-}
-
-.event-card a:hover {
-  transform: translateY(-4px);
-}
-
-/* ===============================
-   EVENT IMAGE
-================================ */
+/* image */
 
 .event-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 8px;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
 }
 
-/* ===============================
-   RESPONSIVE – EVENTS
-================================ */
-
-@media (max-width: 900px) {
-    .events-layout {
-        flex-direction: column;
-    }
-
-    .filter-pane {
-        width: 100%;
-    }
-
-    .hero-carousel h1 {
-        font-size: 2.2rem;
-    }
+.event-card:hover .event-image {
+  transform: scale(1.08);
 }
 
-/* ===============================
-   MOBILE – EVENTS FILTER BAR
-================================ */
+/* content */
 
-@media (max-width: 600px) {
+.event-details {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
-  /* Layout stays vertical */
-  .events-layout {
-    margin: 20px 0;
-    padding: 0 12px;
-    flex-direction: column;
-  }
+.event-details h4 {
+  color: #000;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
 
-  /* FILTER BAR (TOP) */
-  .filter-pane {
-    position: sticky;
-    top: 70px;
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 12px;
-    z-index: 50;
+.event-details p {
+  font-size: 0.9rem;
+  color: #555;
+}
 
-    /* collapsed by default */
-    max-height: 56px;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
+/* CTA */
 
-  /* Expanded state */
-  .filter-pane.open {
-    max-height: 900px; /* big enough to show all filters */
-  }
+.book-btn {
+  margin-top: 1.2rem;
+}
 
-  /* Filter title becomes toggle button */
-  .filter-pane h3 {
-    font-size: 1rem;
-    margin: 0;
-    padding: 0;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-  }
+.book-btn a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
 
-  /* Arrow indicator */
-  .filter-pane h3::after {
-    content: "▾";
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-  }
-
-  .filter-pane.open h3::after {
-    transform: rotate(180deg);
-  }
-
-  /* Filter content spacing */
-  .filter-group,
-  .filter-pane label,
-  .price-inputs,
-  .filter-pane button,
-  .filter-pane input {
-    margin-top: 16px;
-  }
-
-  /* EVENTS */
-  .events-pane {
-    margin-top: 20px;
-  }
-
-  .event-details {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .event-card a {
-    width: 100%;
-    text-align: center;
-    margin: 12px 0 0;
-  }
+.book-btn a:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
 }

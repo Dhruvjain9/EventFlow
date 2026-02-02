@@ -1,27 +1,82 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../stylesheets/login.css";
 import Loader from "../components/Loader";
+import gsap from "gsap";
 
 function Login() {
   const location = useLocation();
-  const [mode, setMode] = useState(location.state || "signin");
   const navigate = useNavigate();
 
-
-  // Form state
+  const [mode, setMode] = useState(location.state || "signin");
   const [step, setStep] = useState(1);
 
+  // Form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState(0);
   const [country, setCountry] = useState("");
-  
+
   // UI state
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // GSAP refs
+  const cardRef = useRef(null);
+  const infoRef = useRef(null);
+  const formRef = useRef(null);
+
+  /* ===============================
+     PAGE ENTRANCE ANIMATION
+  ============================== */
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    tl.from(cardRef.current, {
+      scale: 0.96,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+    })
+      .from(
+        infoRef.current,
+        {
+          x: -40,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power3.out",
+        },
+        "-=0.4"
+      )
+      .from(
+        formRef.current,
+        {
+          x: 40,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power3.out",
+        },
+        "-=0.6"
+      );
+  }, []);
+
+  /* ===============================
+     MODE SWITCH ANIMATION
+  ============================== */
+  useEffect(() => {
+    setStep(1);
+    gsap.from(formRef.current, {
+      y: 20,
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.out",
+    });
+  }, [mode]);
+
+  /* ===============================
+     GEOLOCATION
+  ============================== */
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -35,22 +90,16 @@ function Login() {
             setCountry(data.address.country);
           }
         } catch {
-          console.log("Could not get location!");
+          console.log("Could not get location");
         }
       },
-      () => {
-        console.log("Location permission denied");
-      }
+      () => console.log("Location permission denied")
     );
   }, []);
 
-
-  useEffect(() => {
-    setStep(1);
-  }, [mode]);
-
-
-
+  /* ===============================
+     SUBMIT HANDLER
+  ============================== */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -68,33 +117,31 @@ function Login() {
           };
 
     try {
-      const res = await fetch("https://eventflow-backend-production-6fc4.up.railway.app/auth.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          mode, // "signin" or "signup"
-          ...payload,
-        }),
-      });
+      const res = await fetch(
+        "https://eventflow-backend-production-6fc4.up.railway.app/auth.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mode, ...payload }),
+        }
+      );
 
       const data = await res.json();
-
       if (!res.ok || !data.success) {
-        throw new Error(
-          data?.error || "Authentication failed. Please try again."
-        );
+        throw new Error(data?.error || "Authentication failed");
       }
 
-      // Store auth data
       localStorage.setItem("auth_token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-
-      // Redirect on success
       navigate("/");
     } catch (err) {
       setError(err.message);
+      gsap.from(".auth-error", {
+        x: 10,
+        duration: 0.08,
+        repeat: 3,
+        yoyo: true,
+      });
     } finally {
       setLoading(false);
     }
@@ -102,86 +149,84 @@ function Login() {
 
   return (
     <>
-    {loading && <Loader text={mode === "signin" ? "Signing in..." : "Creating account..."} />}
-    <main className="auth-page">
-      <div className="auth-card">
-        {/* LEFT SIDE */}
-        <div className="auth-info">
-          {mode === "signin" ? (
-            <>
-              <h2>Welcome Back</h2>
-              <p>Sign in to continue booking and managing your events.</p>
-              <button
-                className="outline"
-                onClick={() => {
-                  setMode("signup");
-                  setError("");
-                }}
-              >
-                Create an Account
-              </button>
-            </>
-          ) : (
-            <>
-              <h2>Join EventFlow</h2>
-              <p>Create an account and start booking amazing events.</p>
-              <button
-                className="outline"
-                onClick={() => {
-                  setMode("signin");
-                  setError("");
-                }}
-              >
-                Already have an account?
-              </button>
-            </>
-          )}
-        </div>
+      {loading && (
+        <Loader
+          text={mode === "signin" ? "Signing in..." : "Creating account..."}
+        />
+      )}
 
-        {/* RIGHT SIDE */}
-        <div className="auth-form">
-          {mode === "signin" ? (
-            <>
-              <h1>Sign In</h1>
-
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-
-                {error && <p className="auth-error">{error}</p>}
-
-                <button type="submit" disabled={loading}>
-                  {loading ? "Signing in..." : "Sign In"}
+      <main className="auth-page">
+        <div className="auth-card" ref={cardRef}>
+          {/* LEFT INFO */}
+          <div className="auth-info" ref={infoRef}>
+            {mode === "signin" ? (
+              <>
+                <h2>Welcome Back</h2>
+                <p>Sign in to continue booking and managing your events.</p>
+                <button
+                  className="outline"
+                  onClick={() => {
+                    setMode("signup");
+                    setError("");
+                  }}
+                >
+                  Create an Account
                 </button>
-                <p className="secure-text">
-                  <span class="material-symbols-outlined">
-                    warning
-                  </span>
-                  This is a demo website for learning and testing purposes only.
-                </p>
-              </form>
-            </>
-          ) : (
-            <>
+              </>
+            ) : (
+              <>
+                <h2>Join EventFlow</h2>
+                <p>Create an account and start booking amazing events.</p>
+                <button
+                  className="outline"
+                  onClick={() => {
+                    setMode("signin");
+                    setError("");
+                  }}
+                >
+                  Already have an account?
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* RIGHT FORM */}
+          <div className="auth-form" ref={formRef}>
+            {mode === "signin" ? (
+              <>
+                <h1>Sign In</h1>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+
+                  {error && <p className="auth-error">{error}</p>}
+
+                  <button type="submit" disabled={loading}>
+                    Sign In
+                  </button>
+                </form>
+              </>
+            ) : (
               <form className="signup-form" onSubmit={handleSubmit}>
                 <div
                   className="signup-slider"
-                  style={{ transform: `translateX(${step === 1 ? "0%" : "-50%"})` }}
+                  style={{
+                    transform: `translateX(${step === 1 ? "0%" : "-50%"})`,
+                  }}
                 >
-                  {/* SLIDE 1 */}
+                  {/* STEP 1 */}
                   <div className="signup-slide">
                     <input
                       type="text"
@@ -190,7 +235,6 @@ function Login() {
                       onChange={(e) => setName(e.target.value)}
                       required
                     />
-
                     <input
                       type="email"
                       placeholder="Email address"
@@ -198,7 +242,6 @@ function Login() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
-
                     <input
                       type="password"
                       placeholder="Password"
@@ -206,30 +249,18 @@ function Login() {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
-                    
                     <button
                       type="button"
                       className="next-btn"
                       onClick={() => {
-                        if (password && name && email) {
-                          setStep(2);
-                        } else {
-                          console.log("Enter complete details");
-                        }
+                        if (name && email && password) setStep(2);
                       }}
                     >
                       Next →
                     </button>
-                    <p className="secure-text">
-                        <span class="material-symbols-outlined">
-                          warning
-                        </span>
-                        This is a demo website for learning and testing purposes only.
-                    </p>
-
                   </div>
 
-                  {/* SLIDE 2 */}
+                  {/* STEP 2 */}
                   <div className="signup-slide">
                     <label>Age</label>
                     <input
@@ -238,7 +269,6 @@ function Login() {
                       onChange={(e) => setAge(e.target.value)}
                       required
                     />
-
                     <input
                       type="text"
                       placeholder="Country"
@@ -255,27 +285,17 @@ function Login() {
                       >
                         ← Back
                       </button>
-
                       <button type="submit">Create Account</button>
-                      <p className="secure-text">
-                        <span class="material-symbols-outlined">
-                          warning
-                        </span>
-                        This is a demo website for learning and testing purposes only.
-                      </p>
                     </div>
                   </div>
                 </div>
               </form>
-
-            </>
-          )}
+            )}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     </>
   );
 }
 
 export default Login;
-

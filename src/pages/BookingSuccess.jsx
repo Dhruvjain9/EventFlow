@@ -67,12 +67,6 @@ function BookingSuccess() {
             Go Home
           </button>
         </div>
-        <p className="secure-text">
-            <span class="material-symbols-outlined">
-              warning
-            </span>
-            This is a demo website for learning and testing purposes only.
-          </p>
       </div>
     </main>
   );

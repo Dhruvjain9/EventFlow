@@ -1,13 +1,15 @@
+import { createPortal } from "react-dom";
 import "./css/loader.css";
 
 function Loader({ text = "Loading..." }) {
-  return (
+  return createPortal(
     <div className="loader-overlay">
       <div className="loader-box">
         <div className="spinner" />
         <p>{text}</p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

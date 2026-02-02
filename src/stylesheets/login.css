@@ -4,96 +4,167 @@
 
 .auth-page {
   min-height: 100vh;
-  background: #FFF1D0;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
 }
 
-/* Card */
+/* ===============================
+   CARD
+================================ */
+
 .auth-card {
   width: 100%;
-  max-width: 900px;
-  background: #FFF1D0;
-  border-radius: 18px;
+  max-width: 920px;
+  background: #ffffff;
+  border-radius: 22px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  will-change: transform, opacity;
 }
 
-/* LEFT INFO SIDE */
+/* ===============================
+   LEFT INFO PANEL
+================================ */
+
 .auth-info {
-  background: #086788;
-  color: #FFF1D0;
-  padding: 60px 40px;
+  background: #000000;
+  color: #ffffff;
+  padding: 64px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .auth-info h2 {
-  margin-bottom: 14px;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .auth-info p {
-  opacity: 0.9;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: 32px;
+  line-height: 1.6;
 }
 
-/* Outline button */
 .auth-info button.outline {
   background: transparent;
-  color: #FFF1D0;
-  border: 2px solid #FFF1D0;
-  padding: 12px 20px;
+  color: #ffffff;
+  border: 1.5px solid #ffffff;
+  padding: 12px 24px;
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-/* RIGHT FORM SIDE */
+.auth-info button.outline:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   RIGHT FORM PANEL
+================================ */
+
 .auth-form {
-  padding: 60px 40px;
+  padding: 64px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .auth-form h1 {
-  color: #086788;
-  margin-bottom: 24px;
+  color: #000000;
+  font-size: 2rem;
+  margin-bottom: 28px;
+  font-weight: 700;
 }
 
-/* Form */
+/* ===============================
+   FORM ELEMENTS
+================================ */
+
 .auth-form form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .auth-form input {
   padding: 14px 16px;
-  border-radius: 8px;
-  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 0.95rem;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
 }
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   PRIMARY BUTTON
+================================ */
 
 .auth-form button {
-  margin-top: 10px;
+  margin-top: 12px;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 999px;
   border: none;
-  background: #000;
-  color: #FFF1D0;
+  background: #000000;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.auth-error{
+.auth-form button:hover {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  transform: translateY(-2px);
+}
+
+.auth-form button:active {
+  transform: translateY(0);
+}
+
+/* ===============================
+   ERROR MESSAGE
+================================ */
+
+.auth-error {
   color: #dd1c1a;
-  margin: auto 0 ;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
 }
 
 /* ===============================
@@ -108,7 +179,7 @@
 .signup-slider {
   display: flex;
   width: 200%;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .signup-slide {
@@ -116,21 +187,29 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  font-size: 20px;
-  color: #086788;
+  gap: 18px;
 }
 
-/* Buttons */
+/* ===============================
+   SIGNUP ACTION BUTTONS
+================================ */
+
 .next-btn,
 .back-btn {
   background: transparent;
-  border: 1px solid #DD1C1A;
-  color: #DD1C1A;
-  padding: 10px;
-  border-radius: 6px;
+  border: 1.5px solid #000000;
+  color: #000000;
+  padding: 12px;
+  border-radius: 999px;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.next-btn:hover,
+.back-btn:hover {
+  background: #000000;
+  color: #ffffff;
 }
 
 .signup-actions {
@@ -140,153 +219,19 @@
 }
 
 .signup-actions button[type="submit"] {
-  background: #DD1C1A;
-  color: #FFF1D0;
+  background: #000000;
+  color: #ffffff;
   border: none;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 14px;
+  border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 768px) {
-  .auth-card {
-    grid-template-columns: 1fr;
-  }
-
-  .auth-info {
-    text-align: center;
-  }
-}
-
-/* ===============================
-   MOBILE – AUTH PAGE + 2 STEP SIGNUP
-================================ */
-
-@media (max-width: 600px) {
-
-  /* ---------- PAGE ---------- */
-
-  .auth-page {
-    padding: 16px;
-    align-items: flex-start;
-  }
-
-  /* ---------- CARD ---------- */
-
-  .auth-card {
-    border-radius: 14px;
-    box-shadow: none;
-  }
-
-  /* ---------- INFO SECTION ---------- */
-
-  .auth-info {
-    padding: 32px 20px;
-    text-align: center;
-  }
-
-  .auth-info h2 {
-    font-size: 22px;
-  }
-
-  .auth-info p {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .auth-info button.outline {
-    width: 100%;
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  /* ---------- FORM ---------- */
-
-  .auth-form {
-    padding: 32px 20px;
-  }
-
-  .auth-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .auth-form form {
-    gap: 14px;
-  }
-
-  .auth-form input {
-    font-size: 14px;
-    padding: 12px 14px;
-  }
-
-  .auth-form button {
-    font-size: 15px;
-    padding: 14px;
-  }
-
-  .auth-error {
-    font-size: 13px;
-    text-align: center;
-  }
-
-  /* ===============================
-     2 STEP SIGNUP (MOBILE)
-  ============================== */
-
-  .signup-form {
-    overflow: hidden;
-    width: 100%;
-  }
-
-  .signup-slider {
-    width: 200%;
-    display: flex;
-    transition: transform 0.45s ease-in-out;
-  }
-
-  .signup-slide {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  /* Step label */
-  .signup-slide::before {
-    content: attr(data-step);
-    font-size: 12px;
-    font-weight: 600;
-    color: #dd1c1a;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-
-  /* ---------- ACTIONS ---------- */
-
-  .signup-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .next-btn,
-  .back-btn {
-    width: 100%;
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  .signup-actions button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
-  }
+.signup-actions button[type="submit"]:hover {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  transform: translateY(-2px);
 }

@@ -1,0 +1,17 @@
+.map-footprint {
+  position: fixed;
+  font-size: 42px;
+  color: #c9a227; /* antique gold */
+  opacity: 0;
+
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 2; /* TEMP: on top for verification */
+
+  text-shadow:
+    0 0 6px rgba(201, 162, 39, 0.4),
+    0 0 14px rgba(201, 162, 39, 0.25);
+
+  will-change: opacity, transform;
+}
