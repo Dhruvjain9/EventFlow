@@ -116,7 +116,6 @@ function Events() {
   return (
     <>
     {loading && <Loader text="Loading Events..." />}
-    <CursorTrail/>
     <main>
     {/* HERO SLIDESHOW */}
       <section className="events-hero">
