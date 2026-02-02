@@ -174,3 +174,21 @@ nav {
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .profile-dropdown {
+    min-width: 140px;
+  }
+
+  .greet-profile {
+    display: none;
+  }
+
+  .signup-btn{
+    display: none;
+  }
+}

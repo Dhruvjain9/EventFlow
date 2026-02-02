@@ -76,7 +76,7 @@ function Navbar() {
 
           {!isLoggedIn ? (
             <>
-              <Link to="/Login" state="signin">
+              <Link to="/Login" state="signin" className="signin-btn">
                 Sign In
               </Link>
               <Link to="/Login" state="signup" className="signup-btn">

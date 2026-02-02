@@ -238,3 +238,145 @@
   color: #666;
   text-align: center;
 }
+
+/* ===============================
+   TABLET – BOOKING PAGE
+================================ */
+
+@media (max-width: 1024px) {
+
+  .booking-hero {
+    padding: 5rem 6vw 3.5rem;
+  }
+
+  .booking-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
+  }
+
+  .booking-hero p {
+    font-size: 1rem;
+  }
+
+  .booking-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 0 6vw;
+  }
+
+  /* Receipt loses sticky on tablet */
+  .booking-right {
+    position: relative;
+    top: auto;
+  }
+
+  .receipt {
+    padding: 26px;
+  }
+}
+
+/* ===============================
+   MOBILE – BOOKING PAGE
+================================ */
+
+@media (max-width: 600px) {
+
+  /* ---------- HERO ---------- */
+
+  .booking-hero {
+    padding: 4rem 5vw 3rem;
+  }
+
+  .booking-hero h1 {
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .booking-hero p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ---------- LAYOUT ---------- */
+
+  .booking-content {
+    grid-template-columns: 1fr;
+    padding: 0 5vw;
+    margin-top: 24px;
+    gap: 20px;
+  }
+
+  .booking-left {
+    gap: 20px;
+  }
+
+  /* ---------- CARDS ---------- */
+
+  .card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+
+  /* ---------- EVENT DETAILS ---------- */
+
+  .event-detail-row {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+
+  /* ---------- TICKET STEPPER ---------- */
+
+  .ticket-stepper {
+    max-width: 100%;
+    justify-content: space-between;
+  }
+
+  .ticket-stepper button {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .ticket-stepper span {
+    font-size: 1.1rem;
+  }
+
+  /* ---------- RECEIPT ---------- */
+
+  .booking-right {
+    position: relative;
+    top: auto;
+  }
+
+  .receipt {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .receipt h2 {
+    font-size: 1.15rem;
+  }
+
+  .receipt-row {
+    font-size: 0.9rem;
+  }
+
+  .receipt-total strong {
+    font-size: 1.25rem;
+  }
+
+  /* ---------- CHECKOUT ---------- */
+
+  .checkout-btn {
+    padding: 13px;
+    font-size: 0.95rem;
+  }
+
+  .secure-text {
+    font-size: 0.75rem;
+  }
+}
