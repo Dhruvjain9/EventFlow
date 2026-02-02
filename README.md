@@ -1,195 +1,118 @@
-# 🎟️ EventFlow (v1.5.0)
+# 🎟️ EventFlow
 
-EventFlow is a full-stack event discovery and booking platform designed to simulate a real-world event booking experience. Users can browse events, apply filters, authenticate, review bookings, complete a payment step, and receive booking confirmations. The project focuses on **clean user flows, protected navigation, and production-oriented architecture**.
+**EventFlow** is a modern event discovery and booking platform built to simulate how real-world web applications are designed, structured, and scaled.  
+It focuses on **clean UX**, **smooth animations**, and **practical full-stack workflows** — from browsing events to completing secure payments.
 
----
-
-## 📌 Project Status
-
-* **Current Stable Version:** v1.5.0
-* **Active Development Branch:** `v1.3.1beta`
-* **MVP Snapshot Branch:** `Deployment`
-* **Lifecycle:** Active development (v1.x)
-
-All ongoing development happens in the **beta branch**, while release candidates and stable snapshots are branched deliberately.
+> This project is not a demo or clone. It is a hands-on exploration of building a production-grade web experience.
 
 ---
 
-## ✨ Core Features
+## 🚀 Current Version
 
-### 🏠 Home Page
-
-* Hero section highlighting featured events
-* Overview of platform capabilities
-* Clear call-to-action to explore events
+**v2.0.0** — Major UI & Experience Upgrade  
+See full details in [`RELEASE_NOTES.md`](./RELEASE_NOTES.md)
 
 ---
 
-### 📅 Events Discovery
+## ✨ Features
 
-* Server-backed event listing
-* Advanced filtering:
+### 🧭 Event Discovery
+- Browse curated events
+- Filter by city, date, and price range
+- Clean card-based layout with hover interactions
 
-  * City (multi-select)
-  * Date
-  * Price range (min / max)
-* Event cards displaying key information
-* Entry point into the booking flow
+### 🎬 Smooth Animations
+- GSAP-powered page transitions
+- Micro-interactions on buttons, tabs, and cards
+- Animated totals during checkout
+- Confetti celebration on successful booking 🎉
 
----
+### 🛒 Booking & Checkout
+- Ticket quantity controls
+- Receipt-style order summary
+- Secure checkout flow
+- Route-protected booking pages
 
-### 🔐 Authentication
+### 💳 Payments
+- Card and UPI payment options
+- Transaction verification
+- Full-screen loader during processing
+- Clear success and error handling
 
-* User Sign In and Sign Up flows
-* Token-based authentication
-* Persistent login using local storage
-* Authentication state shared across the app
+### 👤 Authentication
+- Sign In / Sign Up flow
+- Two-step signup process
+- Session persistence using localStorage
+- Protected routes for bookings and payments
 
----
-
-### 🎟️ Booking System (Refined)
-
-* Protected routes for sensitive flows:
-
-  * Booking
-  * Payment
-  * Booking success
-* Guards against:
-
-  * Manual URL access
-  * Skipping steps in multi-page flows
-  * Invalid refresh behavior
-
----
-
-### 🎟️ Booking Flow
-
-The booking experience is structured as a **multi-step, protected flow**:
-
-```
-Events → Booking → Payment → Booking Success
-```
-
-#### Booking Page
-
-* Displays selected event details
-* Ticket quantity selection with limits
-* No duplicate user detail collection
+### 🧭 Navigation
+- Fixed, glass-style navbar with scroll blur
+- Route-aware navbar visibility
+- Profile dropdown with smooth hover behavior
+- Mobile-friendly navigation
 
 ---
 
-### 💳 Payment Page
+## 🎨 Design Philosophy
 
-* Dedicated payment step between booking and confirmation
-* Displays:
-
-  * Event summary
-  * Ticket count
-  * Total payable amount
-* Designed to support real payment gateway integration
-* Success required to proceed
+- Minimal black & white aesthetic
+- Soft shadows instead of hard borders
+- Clear visual hierarchy
+- Motion used to guide attention — not distract
+- Mobile-first responsiveness
 
 ---
 
-### ✅ Booking Confirmation
-
-* Dedicated booking success page
-* Displays booking ID and event summary
-* Guarded against direct access and refresh abuse
-
----
-
-### ⏳ Loader Overlay
-
-* Global loader overlay for asynchronous actions
-* Activated during:
-
-  * API requests
-  * Booking submission
-  * Payment processing
-* Prevents duplicate actions and improves user feedback
-
----
-
-### 🚪 Logout Flow
-
-* Dedicated logout route
-* Clears authentication state and session data
-* Prevents silent redirects and unauthorized reuse
-
----
-
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
-
-* React
-* React Router
-* CSS (modular stylesheets)
+- **React**
+- **React Router**
+- **GSAP** (animations & ScrollSmoother)
+- **CSS3** (custom design system)
 
 ### Backend
+- **PHP REST APIs**
+- **MySQL** (events, users, bookings)
+- Hosted backend (Railway)
 
-* REST-style API
-* Authentication endpoints
-* Event retrieval and booking APIs
-
-### Database
-
-* MongoDB (document-based data modeling)
-
----
-
-## 🌐 Deployment
-
-* **Frontend:** Vercel
-* **Backend:** Railway
-* **Database:** MongoDB
-
-The full application stack is deployed and integrated.
+### Utilities
+- `canvas-confetti` for success feedback
+- Browser Geolocation API (signup enrichment)
 
 ---
 
-## 🧱 Project Structure (High Level)
+## 📂 Project Structure
 
-* `Home` – Landing page and feature overview
-* `Events` – Event discovery and filtering
-* `Login` – Authentication flows
-* `Booking` – Event review and ticket selection
-* `Payment` – Payment step
-* `BookingSuccess` – Confirmation view
-* `Logout` – Session termination
-* `About` – Project and author information
-
----
-
-## 🧪 Stability & Reliability
-
-* Strong route-level access control
-* Defensive UI guards for multi-step navigation
-* Backend validation for booking and payment-related requests
-* Improved handling of async state transitions
-
----
-
-## ⚠️ Known Limitations (Beta)
-
-* Payment processing is currently mock / non-transactional
-* No user dashboard or booking history page yet
-* Error pages (403 / 408 / 500) are planned but not fully finalized
-* Mobile responsiveness improvements are deferred
-
----
-
-## 🗺️ Roadmap (High Level)
-
-* User dashboard with booking history
-* Finalized error handling pages
-* Real payment gateway integration
-* Mobile-first responsiveness
-* Admin-side event management
-
----
-
-## 📄 Summary
-
-EventFlow v1.5.0 represents a feature-complete MVP foundation with authentication, protected booking flows, a payment step, and a fully deployed backend infrastructure. The project prioritizes correctness, flow integrity, and real-world architectural patterns, serving as a strong base for future iteration and expansion.
+```txt
+src/
+├── components/
+│   ├── navbar
+│   ├── footer
+│   ├── loader
+│   ├── cursortrail
+│
+├── pages/
+│   ├── Home
+│   ├── Events
+│   ├── Booking
+│   ├── Payments
+│   ├── BookingSuccess
+│   ├── Login
+│   ├── About
+│
+├── error/
+│   ├── NotFound
+│   └── Unauthorized
+│
+├── stylesheets/
+│   ├── home.css
+│   ├── events.css
+│   ├── booking.css
+│   ├── bookingsuccess.css
+│   ├── login.css
+│   ├── about.css
+│   ├── payment.css
+│   └── layout.css
+│
+└── App.jsx
