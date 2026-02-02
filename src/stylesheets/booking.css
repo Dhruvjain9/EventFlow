@@ -1,46 +1,49 @@
 /* ===============================
-   BASE
+   BOOKING PAGE – BASE
 ================================ */
 
 .booking-page {
-  background: #fff1d0;
   min-height: 100vh;
+  background: #ffffff;
   padding-bottom: 80px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===============================
-   HERO HEADER (STATIC FEEL)
+   HERO
 ================================ */
 
 .booking-hero {
-  background: #0b6477;
-  color: #fff;
-  padding: 60px 20px;
+  padding: 6rem 8vw 4rem;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff, #f6f6f6);
 }
 
 .booking-hero h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.6rem;
+  color: #000;
 }
 
 .booking-hero p {
-  font-size: 18px;
-  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.6;
 }
 
 /* ===============================
-   MAIN LAYOUT
+   LAYOUT
 ================================ */
 
 .booking-content {
-  max-width: 1200px;
-  margin: 40px auto 0;
-  padding: 0 20px;
-
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.6fr 1fr;
   gap: 32px;
+  padding: 0 8vw;
+  margin-top: 40px;
 }
 
 /* ===============================
@@ -53,27 +56,55 @@
   gap: 24px;
 }
 
-/* Shared card */
+/* ===============================
+   CARD
+================================ */
+
 .card {
-  background: #f0c808;
-  border: 2px solid #dd1c1a;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 18px;
   padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
-  color: #dd1c1a;
-  font-size: 22px;
-  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #000;
 }
 
-/* Detail rows */
+/* ===============================
+   EVENT DETAIL ROW
+================================ */
+
 .event-detail-row {
-  color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 16px;
+  align-items: center;
+  font-size: 0.95rem;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.event-detail-row:last-child {
+  border-bottom: none;
+}
+
+.event-detail-row span {
+  color: #666;
+}
+
+.event-detail-row strong {
+  color: #000;
+  font-weight: 600;
 }
 
 /* ===============================
@@ -83,29 +114,37 @@
 .ticket-stepper {
   display: flex;
   align-items: center;
-  gap: 16px;
-}
-
-.ticket-stepper span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #dd1c1a;
+  justify-content: space-between;
+  max-width: 220px;
+  margin-top: 8px;
 }
 
 .ticket-stepper button {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  border: none;
-  background: #dd1c1a;
-  color: #fff1d0;
-  font-size: 20px;
+  border: 1px solid #000;
+  background: #fff;
+  font-size: 1.4rem;
   cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ticket-stepper button:hover:not(:disabled) {
+  background: #000;
+  color: #fff;
 }
 
 .ticket-stepper button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.ticket-stepper span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-width: 40px;
+  text-align: center;
 }
 
 /* ===============================
@@ -119,173 +158,83 @@
 }
 
 .receipt {
-  background: #ffffff;
-  border: 2px dashed #dd1c1a;
-  border-radius: 12px;
-  padding: 24px;
+  background: #fafafa;
+  border-radius: 20px;
+  padding: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
 }
 
 .receipt h2 {
-  color: #dd1c1a;
-  font-size: 22px;
+  font-size: 1.25rem;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
-/* Receipt rows */
-.receipt-row,
-.receipt-total {
-  color: #000;
+/* ===============================
+   RECEIPT ROWS
+================================ */
+
+.receipt-row {
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: 0.95rem;
+  color: #444;
   margin-bottom: 12px;
 }
 
 .receipt-divider {
   height: 1px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.08);
   margin: 16px 0;
 }
 
 .receipt-total {
-  font-size: 18px;
-  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
 }
 
-/* CTA */
+.receipt-total strong {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #000;
+}
+
+/* ===============================
+   CHECKOUT BUTTON
+================================ */
+
 .checkout-btn {
   width: 100%;
   margin-top: 20px;
   padding: 14px;
-  background: #dd1c1a;
-  color: #fff1d0;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .checkout-btn:hover {
-  opacity: 0.9;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
 }
+
+.checkout-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   SECURE TEXT
+================================ */
 
 .secure-text {
-  color: #dd1c1a;
   margin-top: 12px;
-  font-size: 13px;
+  font-size: 0.8rem;
+  color: #666;
   text-align: center;
-  opacity: 0.7;
-}
-
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 900px) {
-  .booking-content {
-    grid-template-columns: 1fr;
-  }
-
-  .booking-right {
-    position: static;
-  }
-}
-
-/* ===============================
-   MOBILE – BOOKING PAGE
-================================ */
-
-@media (max-width: 600px) {
-
-  /* ---------- HERO ---------- */
-
-  .booking-hero {
-    padding: 40px 16px;
-    text-align: center;
-  }
-
-  .booking-hero h1 {
-    font-size: 28px;
-  }
-
-  .booking-hero p {
-    font-size: 15px;
-  }
-
-  /* ---------- MAIN LAYOUT ---------- */
-
-  .booking-content {
-    margin-top: 24px;
-    padding: 0 16px;
-    gap: 20px;
-  }
-
-  /* ---------- LEFT COLUMN ---------- */
-
-  .booking-left {
-    gap: 16px;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  .card h2 {
-    font-size: 18px;
-  }
-
-  .event-detail-row {
-    font-size: 14px;
-  }
-
-  /* ---------- TICKET STEPPER ---------- */
-
-  .ticket-stepper {
-    justify-content: space-between;
-  }
-
-  .ticket-stepper span {
-    font-size: 16px;
-  }
-
-  .ticket-stepper button {
-    width: 34px;
-    height: 34px;
-    font-size: 18px;
-  }
-
-  /* ---------- RECEIPT ---------- */
-
-  .booking-right {
-    position: static;
-  }
-
-  .receipt {
-    padding: 20px;
-  }
-
-  .receipt h2 {
-    font-size: 18px;
-  }
-
-  .receipt-row,
-  .receipt-total {
-    font-size: 14px;
-  }
-
-  .receipt-total {
-    font-size: 16px;
-  }
-
-  /* ---------- CTA ---------- */
-
-  .checkout-btn {
-    font-size: 15px;
-    padding: 14px;
-  }
-
-  .secure-text {
-    font-size: 12px;
-  }
 }

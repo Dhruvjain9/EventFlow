@@ -1,70 +1,51 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Hero from "../components/Hero";
 import "../stylesheets/home.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function Home() {
-  const slides = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1670448257614-be2630bc67fd?q=80&w=1332&auto=format&fit=crop",
-      title: "Discover Amazing Events",
-      subtitle: "Book experiences you’ll never forget",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1610900603480-c0a85ac8e315?q=80&w=1963&auto=format&fit=crop",
-      title: "Live Music & Entertainment",
-      subtitle: "Concerts, shows, and festivals near you",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1722505530451-467a0a28b64c?q=80&w=1170&auto=format&fit=crop",
-      title: "Moments That Matter",
-      subtitle: "Create memories with friends and family",
-    },
-  ];
+  const featuresRef = useRef(null);
+  const ctaRef = useRef(null);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // 🔥 Scroll animations
+  gsap.context(() => {
+    gsap.from(".feature", {
+      scrollTrigger: {
+        trigger: featuresRef.current,
+        start: "top 75%",
+      },
+      y: 60,
+      opacity: 0,
+      scale: 0.95,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.2,
+    });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [slides.length]);
+    gsap.from(ctaRef.current, {
+      scrollTrigger: {
+        trigger: ctaRef.current,
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+  }, []);
 
   return (
     <main>
-      {/* HERO SLIDESHOW */}
-      <section className="hero-carousel">
-        <div className="slides">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`slide ${index === currentSlide ? "active" : ""}`}
-              style={{
-                backgroundImage: `url(${slide.image})`,
-              }}
-            >
-              <div className="overlay">
-                <h1>{slide.title}</h1>
-                <p>{slide.subtitle}</p>
-
-              <div className="btn-container">
-                <Link to="/Events" className="btn">
-                    Browse Events
-                </Link>
-              </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* HERO */}
+      <Hero />
 
       {/* FEATURES */}
-      <section className="features">
+      <section className="features" ref={featuresRef}>
         <div className="feature">
           <img
             src="/images/Image2.png"
@@ -97,7 +78,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="cta">
+      <section className="cta" ref={ctaRef}>
         <h2>Ready to Experience Something New?</h2>
         <Link to="/Events">
           <button>Get Started</button>

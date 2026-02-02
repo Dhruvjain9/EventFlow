@@ -1,62 +1,111 @@
-/* ===============================
-   404 PAGE
-================================ */
-
 .notfound-page {
   min-height: 100vh;
-  background: #FFF1D0;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
+/* CARD */
+
 .notfound-card {
-  background: #DD1C1A;
-  padding: 60px 50px;
-  border: solid #000;
-  border-radius: 14px;
+  z-index: 2;
+  background: #fff;
+  padding: 3.5rem 4rem;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
   text-align: center;
-  max-width: 480px;
-  width: 100%;
+  max-width: 520px;
+  color: #000;
 }
 
 .notfound-card h1 {
-  font-size: 5rem;
-  margin-bottom: 10px;
-  color: #FFF1D0;
+  font-size: 6rem;
+  font-weight: 900;
+  margin-bottom: 0.4rem;
 }
 
 .notfound-card h2 {
-  color: #FFF1D0;
-  margin-bottom: 16px;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .notfound-card p {
-  color: #FFF1D0;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
 }
+
+/* SCORE */
+
+.score {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+}
+
+.score span {
+  font-weight: 900;
+}
+
+/* BUTTON */
 
 .notfound-card button {
-  padding: 14px 28px;
-  background: #FFF1D0;
-  color: #DD1C1A;
+  padding: 0.8rem 2.4rem;
+  border-radius: 999px;
   border: none;
-  border-radius: 6px;
+  background: #000;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
+.notfound-card button:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+/* GAME ORB */
+
+.orb {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+
+.orb:hover {
+  transform: scale(1.15);
+}
+
+/* MOBILE */
 
 @media (max-width: 600px) {
   .notfound-card {
-    padding: 40px 30px;
+    padding: 2.5rem 2rem;
   }
 
-  .notfound-card h1 {
-    font-size: 4rem;
+  .orb {
+    width: 64px;
+    height: 64px;
   }
 }

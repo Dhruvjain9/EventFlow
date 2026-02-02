@@ -1,0 +1,15 @@
+.flair-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.flair {
+  position: fixed;
+  opacity: 0;
+  width: 50px;
+  will-change: transform, opacity;
+  user-select: none;
+  pointer-events: none;
+}

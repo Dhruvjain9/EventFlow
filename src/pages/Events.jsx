@@ -3,6 +3,13 @@ import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import "../stylesheets/events.css";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CursorTrail from "../components/cursortrail";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 function Events() {
 
   const slides = [
@@ -90,9 +97,26 @@ function Events() {
     fetchEvents();
   }, [cities, date, minPrice, maxPrice]);
 
+  useEffect(() => {
+  gsap.from(".event-card", {
+    scrollTrigger: {
+      trigger: ".events-pane",
+      start: "top 80%",
+    },
+    y: 60,
+    opacity: 0,
+    scale: 0.95,
+    duration: 0.9,
+    ease: "power3.out",
+    stagger: 0.12,
+  });
+}, [events]);
+
+
   return (
     <>
     {loading && <Loader text="Loading Events..." />}
+    <CursorTrail/>
     <main>
     {/* HERO SLIDESHOW */}
       <section className="events-hero">

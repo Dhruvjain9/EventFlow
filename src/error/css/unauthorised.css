@@ -1,55 +1,98 @@
 .unauthorized-page {
-  min-height: 80vh;
+  min-height: 100vh;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FFF1D0;
+  padding: 24px;
 }
 
 .unauthorized-card {
-  background: #F0C808;
-  border: 2px solid #DD1C1A;
-  border-radius: 16px;
-  padding: 48px 40px;
+  background: #ffffff;
+  padding: 3.5rem 4rem;
+  border-radius: 24px;
   text-align: center;
-  max-width: 420px;
+  max-width: 520px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.unauthorized-image {
+  width: 220px;
+  margin-bottom: 1.8rem;
+  opacity: 0.9;
 }
 
 .unauthorized-card h1 {
-  font-size: 72px;
-  color: #DD1C1A;
-  margin-bottom: 8px;
+  color: #000;
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 0.2rem;
 }
 
 .unauthorized-card h2 {
-  font-size: 24px;
-  color: #DD1C1A;
-  margin-bottom: 16px;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
 .unauthorized-card p {
-  font-size: 16px;
-  color: #DD1C1A;
-  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1.4rem;
+  line-height: 1.6;
 }
 
 .redirect-note {
-  font-size: 14px;
-  opacity: 0.8;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
+.redirect-note span {
+  font-weight: 900;
+  animation: pulse 1s infinite;
+}
+
+/* BUTTON */
+
 .unauthorized-card button {
-  margin-top: 20px;
-  padding: 12px 28px;
-  background: #DD1C1A;
-  color: #FFF1D0;
-  border: none;
+  margin-top: 1.2rem;
+  padding: 0.8rem 2.4rem;
   border-radius: 999px;
-  font-size: 15px;
+  border: none;
+  background: #000;
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .unauthorized-card button:hover {
-  opacity: 0.9;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+/* ANIMATIONS */
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+  .unauthorized-card {
+    padding: 2.5rem 2rem;
+  }
+
+  .unauthorized-card h1 {
+    font-size: 4rem;
+  }
+
+  .unauthorized-image {
+    width: 90px;
+  }
 }

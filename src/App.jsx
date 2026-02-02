@@ -1,5 +1,12 @@
-import { useState, useEffect } from "react";
-import { Link, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollSmoother from "gsap/ScrollSmoother";
+import { Routes, Route, useLocation } from "react-router-dom";
+
+// Components
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import CursorTrail from "./components/cursortrail";
 
 // Styles
 import "./App.css";
@@ -14,130 +21,71 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import Payment from "./pages/Payments";
 
-//support pages
+// Error pages
 import NotFound from "./error/NotFound";
-import Unauthorized from "./error/Unauthorised"
+import Unauthorized from "./error/Unauthorised";
+
+gsap.registerPlugin(ScrollSmoother);
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const isPaymentPage = location.pathname === "/payment";
-  const user = JSON.parse(localStorage.getItem("user"));
+  const smootherRef = useRef(null);
+  const hideNavbarRoutes = ["/booking", "/payment"];
+  const hideNavbar = hideNavbarRoutes.includes(location.pathname);
 
 
+  /* ===============================
+     SCROLL SMOOTHER (ONE INSTANCE)
+  ============================== */
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    setIsLoggedIn(!!user);
-  }, [location.pathname]);
+    if (!smootherRef.current) {
+      smootherRef.current = ScrollSmoother.create({
+        smooth: 1.2,
+        effects: true,
+        smoothTouch: 0.1,
+      });
+    }
 
-  
+    return () => {
+      smootherRef.current?.kill();
+      smootherRef.current = null;
+    };
+  }, []);
+
+  /* ===============================
+     EFFECT TOGGLES PER ROUTE
+  ============================== */
+  const disableEffectsOn = ["/login", "/payment", "/401"];
+  const effectsEnabled = !disableEffectsOn.includes(location.pathname);
+
   return (
     <>
-      {/* NAVBAR */}
-      <header>
-        <nav>
-          <div className="logo">
-            <Link to="/">
-              <img src="/logo.png" alt="Event Flow" />
-            </Link>
-          </div>
-
-          <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/Events">Events</Link>
-            <Link to="/About">About</Link>
-
-            {!isLoggedIn ? (
-              <>
-                <Link to="/Login" state={"signin"}>Sign In</Link>
-                <Link to="/Login" className="signup-btn" state={"signup"}>Sign Up</Link>
-              </>
-            ) : (
-              <div className="profile-wrapper">
-                <span className="material-symbols-outlined profile-icon">
-                  account_circle
-                </span>
-                <span className="greet-profile">
-                  Hi{user?.name ? `, ${user.name}` : ""}
-                </span>
-
-                <div className="profile-dropdown">
-                  {/*<Link to="/profile">Edit Profile</Link>
-                  <Link to="/my-bookings">My Bookings</Link>*/}
-                  <button
-                    disabled={isPaymentPage}
-                    className={isPaymentPage ? "logout-disabled" : ""}
-                    title={isPaymentPage ? "Finish payment before logging out" : ""}
-                    onClick={() => {
-                      if (isPaymentPage) return;
-
-                      localStorage.removeItem("user");
-                      localStorage.removeItem("auth_token");
-                      setIsLoggedIn(false);
-                    }}
-                  >
-                    Logout
-                  </button>
-
-                </div>
-              </div>
-            )}
-          </div>
+      {effectsEnabled && <CursorTrail />}
+      {!hideNavbar && <Navbar />}
 
 
-        </nav>
-      </header>
+      {/* SMOOTH SCROLL WRAPPER */}
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
 
-      {/* ROUTES */}
-      <main className="App">
-        <section className="App-header">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Booking" element={<Booking />} />
-            <Route path="/BookingSuccess" element={<BookingSuccess />} />
-            <Route path="/Events" element={<Events />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Payment" element={<Payment />}/>
-            <Route path="/*" element={<NotFound />} />
-            <Route path="/404" element={<NotFound />} />
-            <Route path="/401" element={<Unauthorized/>}/>
-          </Routes>
-        </section>
-      </main>
+          <main className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Booking" element={<Booking />} />
+              <Route path="/BookingSuccess" element={<BookingSuccess />} />
+              <Route path="/Events" element={<Events />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Payment" element={<Payment />} />
+              <Route path="/401" element={<Unauthorized />} />
+              <Route path="/404" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <h3>EventFlow</h3>
-            <p>Discover and book unforgettable events.</p>
-          </div>
-
-          <div className="footer-links">
-            <h4>Explore</h4>
-            <ul>
-              <li>
-                <Link to="/Events">Events</Link>
-              </li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><Link to="/About">About</Link></li>
-            </ul>
-          </div>
+          <Footer />
         </div>
-
-        <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} EventFlow. All rights reserved.</p>
-        </div>
-      </footer>
+      </div>
     </>
   );
 }
