@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Components
 import Navbar from "./components/navbar";
@@ -86,6 +87,7 @@ function App() {
           <Footer />
         </div>
       </div>
+      <SpeedInsights />
     </>
   );
 }
