@@ -1,0 +1,145 @@
+# 📦 EventFlow – Release Notes
+
+## v2.0.0 — UI, UX & Responsiveness Overhaul  
+**Release Type:** Major  
+**Status:** Stable
+
+---
+
+## 🚀 Overview
+
+Version **2.0.0** marks a major milestone for EventFlow.  
+This release focuses on **user experience, visual consistency, animations, and full mobile/tablet responsiveness**, bringing the project much closer to a real-world production-grade application.
+
+---
+
+## 🎨 UI & Visual Enhancements
+
+- Complete UI refinement across all pages
+- Unified black & white design system
+- Replaced hard borders with soft shadows for depth
+- Improved typography hierarchy and spacing
+- Cleaner card layouts for events, booking, and checkout
+- Polished footer with responsive grid layout
+
+---
+
+## 📱 Mobile & Tablet Responsiveness (NEW)
+
+- Fully responsive layouts for:
+  - Home
+  - Events
+  - Booking
+  - Payment
+  - Authentication
+  - About
+- Mobile-first refinements:
+  - Stacked layouts for smaller screens
+  - Touch-friendly buttons and controls
+  - Optimized spacing and font sizes
+- Tablet-specific adjustments:
+  - Collapsible layouts
+  - Balanced grid spacing
+  - Improved readability
+- Fixed navbar overlap issues on mobile and tablet
+- Stable dropdown behavior on touch devices
+
+---
+
+## 🎬 Animations & Interactions
+
+- GSAP-powered page load animations
+- Smooth scrolling using GSAP ScrollSmoother
+- Micro-interactions for:
+  - Buttons
+  - Tabs
+  - Event cards
+  - Totals and counters
+- Animated ticket quantity changes
+- Confetti celebration on successful bookings 🎉
+- Smooth hover and focus states across UI
+
+---
+
+## 🧭 Navigation Improvements
+
+- Fixed, glass-style navbar with scroll blur
+- Scroll-aware navbar shadow
+- Hover-stable profile dropdown (no flicker)
+- Route-aware navbar visibility
+- Navbar intentionally hidden on checkout and payment pages
+
+---
+
+## 🛒 Booking & Checkout Enhancements
+
+- Improved booking page layout
+- Sticky receipt panel on desktop
+- Mobile-friendly stacked checkout view
+- Real-time total and tax calculations
+- Clear visual separation of booking steps
+
+---
+
+## 💳 Payment Flow Improvements
+
+- Redesigned payment UI
+- Card & UPI payment method toggle
+- Improved receipt layout
+- Full-screen loader during payment processing
+- Better validation and error feedback
+
+---
+
+## 👤 Authentication UX Improvements
+
+- Refined Sign In / Sign Up UI
+- Two-step signup flow with smooth transitions
+- Mobile-optimized auth layouts
+- Improved error messaging and feedback
+- Stable layout with fixed navbar support
+
+---
+
+## 🔐 Stability & Error Handling
+
+- Improved route protection logic
+- Custom error pages:
+  - 401 Unauthorized
+  - 404 Not Found
+- Prevented invalid navigation to protected pages
+- Graceful handling of missing or invalid state
+
+---
+
+## ⚙️ Technical Improvements
+
+- Cleaner CSS organization
+- Better separation of layout and component styles
+- Reduced layout shifts
+- Improved animation scoping
+- More predictable responsive behavior
+
+---
+
+## 🧠 Developer Notes
+
+- No backend API changes in this release
+- All improvements are frontend-focused
+- Payments remain simulated
+- Designed to be extensible for future features
+
+---
+
+## 🔮 What’s Next
+
+- User dashboards
+- Booking history
+- Event recommendations
+- Real payment gateway integration
+- Performance optimizations
+- Accessibility enhancements
+
+---
+
+**EventFlow v2.0.0** represents a significant step toward a polished, real-world web application experience.

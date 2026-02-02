@@ -8,7 +8,7 @@ function Unauthorized() {
   const cardRef = useRef(null);
   const imageRef = useRef(null);
 
-  const [countdown, setCountdown] = useState(10);
+  const [countdown, setCountdown] = useState(5);
 
   // Entrance animation
   useEffect(() => {
@@ -53,7 +53,7 @@ function Unauthorized() {
 
     const timer = setTimeout(() => {
       navigate("/login", { replace: true });
-    }, 10000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
