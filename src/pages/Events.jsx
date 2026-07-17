@@ -79,7 +79,7 @@ function Events() {
         setSearchParams(urlparams);
 
         const res = await fetch(
-          `https://eventflow-backend-production-6fc4.up.railway.app/getEvents.php?${params.toString()}`
+          `https://eventflow-backend-production-713a.up.railway.app/getEvents.php?${params.toString()}`
         );
 
         if (!res.ok) throw new Error("Failed to fetch events");
