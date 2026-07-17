@@ -53,7 +53,7 @@ function BookingSuccess() {
 
             <div className="detail-row">
               <span>Price per ticket</span>
-              <strong>${event.ticketPrice}</strong>
+              <strong>₹{event.ticketPrice}</strong>
             </div>
           </div>
         )}
