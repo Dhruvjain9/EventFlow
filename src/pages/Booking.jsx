@@ -115,7 +115,7 @@ function Booking() {
 
             <div className="event-detail-row">
               <span>Price per ticket</span>
-              <strong>${event.ticketPrice}</strong>
+              <strong>₹{event.ticketPrice}</strong>
             </div>
           </div>
 
@@ -176,14 +176,14 @@ function Booking() {
 
             <div className="receipt-row">
               <span>{tickets} × Ticket</span>
-              <span>${event.ticketPrice}</span>
+              <span>₹{event.ticketPrice}</span>
             </div>
 
             <div className="receipt-divider" />
 
             <div className="receipt-total">
               <span>Total</span>
-              <strong ref={totalRef}>${totalPrice}</strong>
+              <strong ref={totalRef}>₹{totalPrice}</strong>
             </div>
 
             <button className="checkout-btn" onClick={proceedToPayment}>
