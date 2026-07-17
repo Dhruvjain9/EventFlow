@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -231,7 +232,7 @@ function Events() {
                     <p>
                       Tickets : {event.ticketsSold} / {event.capacity}
                     </p>
-                    <p>Price: ${event.ticketPrice}</p>
+                    <p>Price: ₹{event.ticketPrice}</p>
                   </div>
                   <div className="book-btn">
                   <Link to={user?"/booking":"/login"} state={{ event }}>Book Now</Link>
